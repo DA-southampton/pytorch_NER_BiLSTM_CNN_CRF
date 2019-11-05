@@ -149,14 +149,14 @@ class DataLoader(DataLoaderHelp):
                     insts.append(inst)
                     inst = Instance()
                 else:
-                    line = line.strip().split(" ")
+                    line = line.strip().split(" ") ## line:['EU'. 'S-ORG']
                     word = line[0]
-                    char = self._add_char(word)
-                    word = self._normalize_word(word)
-                    inst.chars.append(char)
-                    inst.words.append(word)
+                    char = self._add_char(word)## char是个列表，是每个单词的字母组成
+                    word = self._normalize_word(word)##返回的是一个字符串，就是把输入word字符串中的数字转为'0':engl7sh->engl0sh
+                    inst.chars.append(char)## inst.chars本身是一个list，把现在这个单词对应的char列表加进去
+                    inst.words.append(word)## inst.words本身是一个lsit，把修改之后的word加进去
                     inst.labels.append(line[-1])
-                if len(insts) == self.max_count:
+                if len(insts) == self.max_count:## 控制读取数据量，一般设置为-1，也就是读取全部数据
                     break
             if len(inst.words) != 0:
                 inst.words_size = len(inst.words)
@@ -164,7 +164,7 @@ class DataLoader(DataLoaderHelp):
             # print("\n")
         return insts
 
-    def _add_char(self, word):
+    def _add_char(self, word): ## 返回一个列表，列表元素是单词中的字母，超过最大的，取原始单词的前一半和后一半，没超过的我们使用填充
         """
         :param word:
         :return:

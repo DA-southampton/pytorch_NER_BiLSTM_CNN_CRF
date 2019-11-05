@@ -52,7 +52,7 @@ class Iterators:
         self.batch_size = batch_size
         self.data = data
         self.device = device
-        self.operator = operator
+        self.operator = operator ## operator 就是alphabet
         self.operator_static = None
         self.iterator = []
         self.batch = []
