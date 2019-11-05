@@ -1,5 +1,15 @@
 
 # NER-LSTM-CNNs-CRF  #
+20191105zida: 我在10.13.0.x机器上，使用cpu数据跑了一遍
+原始仓库的数据只有一部分，我是从这里数据使用的是 https://github.com/ningshixian/NER-CONLL2003
+转换BIO数据使用的./DataUtils/tagSchemeConverter.py 代码
+运行代码是run_train_p_1.sh
+得到的运行结果是  log_train
+
+服务器上 /data1/zida/pytorch_NER_BiLSTM_CNN_CRF-master 10.13.0.X也有相同部署代码
+
+
+______________________________________________________
 - LSTM-CNNs-CRF impolment in pytorch, and test in conll2003 dataset, reference [End-to-end Sequence Labeling via Bi-directional LSTM-CNNs-CRF](http://www.aclweb.org/anthology/P/P16/P16-1101.pdf).
 
 - PyTorch0.3.1 Code release on here. [[PyTorch0.3.1](https://github.com/bamtercelboo/pytorch_NER_BiLSTM_CNN_CRF/releases/tag/PyTorch0.3.1)]  

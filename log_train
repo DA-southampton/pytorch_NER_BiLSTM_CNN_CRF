@@ -1,0 +1,2355 @@
+Process ID 9561, Process Parent ID 1
+Loaded config file sucessfully.
+pretrained_embed : False
+zeros : False
+avg : False
+uniform : False
+nnembed : True
+pretrained_embed_file : glove.6B.100d.txt
+train_file : ./Data/Conll2003_BMES/train.txt
+dev_file : ./Data/Conll2003_BMES/valid.txt
+test_file : ./Data/Conll2003_BMES/test.txt
+max_count : -1
+min_freq : 1
+shuffle : True
+epochs_shuffle : True
+save_pkl : True
+pkl_directory : ./Save_pkl
+pkl_data : pkl_data.pkl
+pkl_alphabet : pkl_alphabet.pkl
+pkl_iter : pkl_iter.pkl
+pkl_embed : pkl_embed.pkl
+save_dict : True
+dict_directory : ./Save_dictionary
+word_dict : dictionary_word.txt
+label_dict : dictionary_label.txt
+save_direction : ./Save_model
+save_best_model_dir : ./Save_BModel
+save_model : True
+save_all_model : False
+save_best_model : True
+model_name : ner_model
+rm_model : True
+average_batch : False
+use_crf : True
+use_char : True
+model_bilstm : True
+model_bilstm_context : False
+lstm_layers : 1
+embed_dim : 100
+embed_finetune : True
+lstm_hiddens : 200
+dropout_emb : 0.5
+dropout : 0.5
+max_char_len : 20
+char_dim : 30
+conv_filter_sizes : 3
+conv_filter_nums : 30
+windows_size : 5
+adam : False
+sgd : True
+learning_rate : 0.015
+weight_decay : 1.0e-8
+momentum : 0.0
+clip_max_norm_use : False
+clip_max_norm : None
+use_lr_decay : True
+lr_rate_decay : 0.05
+min_lrate : 0.000005
+max_patience : 1
+num_threads : 1
+epochs : 1000
+early_max_patience : 10
+backward_batch_size : 1
+batch_size : 10
+dev_batch_size : 10
+test_batch_size : 10
+log_interval : 100
+***************************************
+Device : cpu
+Data Process : True
+Train model : True
+Test model : False
+t_model : None
+t_data : None
+predict : False
+***************************************
+load data for process or pkl data.
+process data
+Processing Data......
+Loading Data......
+Data Path ['./Data/Conll2003_BMES/train.txt', './Data/Conll2003_BMES/valid.txt', './Data/Conll2003_BMES/test.txt']
+Loading Data Form ./Data/Conll2003_BMES/train.txt
+write shuffle insts to file ./Data/Conll2003_BMES/train.txt.shuffle
+Loading Data Form ./Data/Conll2003_BMES/valid.txt
+write shuffle insts to file ./Data/Conll2003_BMES/valid.txt.shuffle
+Loading Data Form ./Data/Conll2003_BMES/test.txt
+write shuffle insts to file ./Data/Conll2003_BMES/test.txt.shuffle
+train sentence 14986, dev sentence 3465, test sentence 3683.
+Build Vocab Start...... 
+the length of train data 14986
+the length of dev data 3465
+the length of test data 3683
+the length of data that create Alphabet 22134
+*****************    create 1 iterator    **************
+The all data has created iterator.
+*****************    create 2 iterator    **************
+The all data has created iterator.
+*****************    create 3 iterator    **************
+The all data has created iterator.
+***************************************
+All Data/Alphabet/Iterator Use Time 52.4645
+***************************************
+learning algorithm is SGD.
+embed_num : 25305, char_embed_num: 64, class_num : 18
+PaddingID 1
+char PaddingID 1
+word_dict_path : ./Save_dictionary/dictionary_word.txt
+label_dict_path : ./Save_dictionary/dictionary_label.txt
+Saving dictionary
+Save dictionary finished.
+Saving dictionary
+Save dictionary finished.
+copy dictionary to ./Save_model/2019-10-30_17-53-26
+***************************************
+Copy models to ./Save_model/2019-10-30_17-53-26
+Sequence_Label(
+  (encoder_model): BiLSTM_CNN(
+    (embed): Embedding(25305, 100, padding_idx=1)
+    (char_embedding): Embedding(64, 30, padding_idx=1)
+    (dropout_embed): Dropout(p=0.5)
+    (dropout): Dropout(p=0.5)
+    (bilstm): LSTM(130, 200, batch_first=True, bidirectional=True)
+    (linear): Linear(in_features=400, out_features=20, bias=True)
+  )
+  (crf_layer): CRF()
+)
+Training Start......
+Optimizer => SGD (lr: 0.015, weight_decay: 1e-08, g_clip: None)
+<bound method CRF.neg_log_likelihood_loss of CRF()>
+
+## The 1 Epoch, All 1000 Epochs ! ##
+now lr is 0.015
+batch_count = [100] , loss is 76.495117, [TAG-ACC is 77.777778%]
+batch_count = [200] , loss is 63.434570, [TAG-ACC is 86.187845%]
+batch_count = [300] , loss is 55.140381, [TAG-ACC is 77.319588%]
+batch_count = [400] , loss is 64.784424, [TAG-ACC is 82.876712%]
+batch_count = [500] , loss is 34.335327, [TAG-ACC is 65.217391%]
+batch_count = [600] , loss is 36.356445, [TAG-ACC is 85.245902%]
+batch_count = [700] , loss is 72.157715, [TAG-ACC is 84.302326%]
+batch_count = [800] , loss is 54.403320, [TAG-ACC is 83.229814%]
+batch_count = [900] , loss is 67.093750, [TAG-ACC is 79.577465%]
+batch_count = [1000] , loss is 48.261963, [TAG-ACC is 84.210526%]
+batch_count = [1100] , loss is 35.037109, [TAG-ACC is 79.268293%]
+batch_count = [1200] , loss is 40.635010, [TAG-ACC is 85.000000%]
+batch_count = [1300] , loss is 49.858887, [TAG-ACC is 85.034014%]
+batch_count = [1400] , loss is 24.124512, [TAG-ACC is 92.957746%]
+Train Time 508.068
+Dev eval: precision = 73.121132%  recall = 55.680862% , f-score = 63.220258%,  [TAG-ACC = 0.000000%]
+Dev Time 27.859
+Test eval: precision = 67.968575%  recall = 53.649894% , f-score = 59.966333%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 63.220258, Locate on 1 Epoch.
+The Current Best Test Result: precision = 67.968575%  recall = 53.649894% , f-score = 59.966333%
+Test Time 26.241
+save best model to ./Save_BModel/ner_model.pt
+
+## The 2 Epoch, All 1000 Epochs ! ##
+now lr is 0.014285714285714285
+batch_count = [100] , loss is 40.797852, [TAG-ACC is 87.341772%]
+batch_count = [200] , loss is 36.167969, [TAG-ACC is 91.304348%]
+batch_count = [300] , loss is 59.536621, [TAG-ACC is 80.681818%]
+batch_count = [400] , loss is 28.984375, [TAG-ACC is 87.283237%]
+batch_count = [500] , loss is 21.368652, [TAG-ACC is 84.158416%]
+batch_count = [600] , loss is 12.754883, [TAG-ACC is 91.869919%]
+batch_count = [700] , loss is 28.048584, [TAG-ACC is 82.142857%]
+batch_count = [800] , loss is 37.846436, [TAG-ACC is 80.373832%]
+batch_count = [900] , loss is 23.912598, [TAG-ACC is 87.200000%]
+batch_count = [1000] , loss is 38.520264, [TAG-ACC is 78.260870%]
+batch_count = [1100] , loss is 15.224121, [TAG-ACC is 89.682540%]
+batch_count = [1200] , loss is 18.434570, [TAG-ACC is 92.571429%]
+batch_count = [1300] , loss is 19.875732, [TAG-ACC is 88.235294%]
+batch_count = [1400] , loss is 15.806396, [TAG-ACC is 82.142857%]
+Train Time 511.656
+Dev eval: precision = 77.782071%  recall = 67.766369% , f-score = 72.429612%,  [TAG-ACC = 0.000000%]
+Dev Time 28.121
+Test eval: precision = 72.281194%  recall = 63.944011% , f-score = 67.857479%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 72.429612, Locate on 2 Epoch.
+The Current Best Test Result: precision = 72.281194%  recall = 63.944011% , f-score = 67.857479%
+Test Time 26.456
+save best model to ./Save_BModel/ner_model.pt
+
+## The 3 Epoch, All 1000 Epochs ! ##
+now lr is 0.013636363636363634
+batch_count = [100] , loss is 28.859131, [TAG-ACC is 84.552846%]
+batch_count = [200] , loss is 17.689453, [TAG-ACC is 87.050360%]
+batch_count = [300] , loss is 26.833008, [TAG-ACC is 83.125000%]
+batch_count = [400] , loss is 7.293457, [TAG-ACC is 91.836735%]
+batch_count = [500] , loss is 17.574707, [TAG-ACC is 84.137931%]
+batch_count = [600] , loss is 32.033203, [TAG-ACC is 87.817259%]
+batch_count = [700] , loss is 16.575684, [TAG-ACC is 82.474227%]
+batch_count = [800] , loss is 25.305176, [TAG-ACC is 88.000000%]
+batch_count = [900] , loss is 30.639160, [TAG-ACC is 86.092715%]
+batch_count = [1000] , loss is 34.180176, [TAG-ACC is 90.816327%]
+batch_count = [1100] , loss is 25.010254, [TAG-ACC is 87.192118%]
+batch_count = [1200] , loss is 21.505371, [TAG-ACC is 87.878788%]
+batch_count = [1300] , loss is 13.625000, [TAG-ACC is 88.888889%]
+batch_count = [1400] , loss is 21.908447, [TAG-ACC is 82.608696%]
+Train Time 537.143
+Dev eval: precision = 78.077542%  recall = 73.556640% , f-score = 75.749697%,  [TAG-ACC = 0.000000%]
+Dev Time 28.154
+Test eval: precision = 71.881960%  recall = 68.621545% , f-score = 70.213923%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 75.749697, Locate on 3 Epoch.
+The Current Best Test Result: precision = 71.881960%  recall = 68.621545% , f-score = 70.213923%
+Test Time 28.978
+save best model to ./Save_BModel/ner_model.pt
+
+## The 4 Epoch, All 1000 Epochs ! ##
+now lr is 0.013043478260869566
+batch_count = [100] , loss is 14.655029, [TAG-ACC is 84.761905%]
+batch_count = [200] , loss is 20.394043, [TAG-ACC is 84.375000%]
+batch_count = [300] , loss is 17.506348, [TAG-ACC is 89.473684%]
+batch_count = [400] , loss is 14.860840, [TAG-ACC is 88.888889%]
+batch_count = [500] , loss is 17.633911, [TAG-ACC is 78.000000%]
+batch_count = [600] , loss is 24.312012, [TAG-ACC is 85.483871%]
+batch_count = [700] , loss is 28.252197, [TAG-ACC is 83.620690%]
+batch_count = [800] , loss is 35.734375, [TAG-ACC is 82.564103%]
+batch_count = [900] , loss is 13.455322, [TAG-ACC is 90.604027%]
+batch_count = [1000] , loss is 52.322754, [TAG-ACC is 75.423729%]
+batch_count = [1100] , loss is 16.004639, [TAG-ACC is 86.238532%]
+batch_count = [1200] , loss is 9.635742, [TAG-ACC is 90.804598%]
+batch_count = [1300] , loss is 16.304688, [TAG-ACC is 84.033613%]
+batch_count = [1400] , loss is 10.908691, [TAG-ACC is 88.571429%]
+Train Time 530.993
+Dev eval: precision = 77.204409%  recall = 77.815183% , f-score = 77.508593%,  [TAG-ACC = 0.000000%]
+Dev Time 59.136
+Test eval: precision = 71.797091%  recall = 73.476258% , f-score = 72.626970%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 77.508593, Locate on 4 Epoch.
+The Current Best Test Result: precision = 71.797091%  recall = 73.476258% , f-score = 72.626970%
+Test Time 59.580
+save best model to ./Save_BModel/ner_model.pt
+
+## The 5 Epoch, All 1000 Epochs ! ##
+now lr is 0.0125
+batch_count = [100] , loss is 16.066895, [TAG-ACC is 90.967742%]
+batch_count = [200] , loss is 29.860352, [TAG-ACC is 82.242991%]
+batch_count = [300] , loss is 12.878418, [TAG-ACC is 88.188976%]
+batch_count = [400] , loss is 28.340820, [TAG-ACC is 82.524272%]
+batch_count = [500] , loss is 9.916260, [TAG-ACC is 82.407407%]
+batch_count = [600] , loss is 17.469727, [TAG-ACC is 89.361702%]
+batch_count = [700] , loss is 11.515381, [TAG-ACC is 80.487805%]
+batch_count = [800] , loss is 16.823486, [TAG-ACC is 84.033613%]
+batch_count = [900] , loss is 24.533691, [TAG-ACC is 87.719298%]
+batch_count = [1000] , loss is 17.868164, [TAG-ACC is 89.655172%]
+batch_count = [1100] , loss is 30.220215, [TAG-ACC is 86.956522%]
+batch_count = [1200] , loss is 13.269043, [TAG-ACC is 85.937500%]
+batch_count = [1300] , loss is 19.172363, [TAG-ACC is 86.567164%]
+batch_count = [1400] , loss is 13.326172, [TAG-ACC is 87.619048%]
+Train Time 787.955
+Dev eval: precision = 79.725793%  recall = 78.303316% , f-score = 79.008152%,  [TAG-ACC = 0.000000%]
+Dev Time 47.266
+Test eval: precision = 74.498313%  recall = 74.326719% , f-score = 74.412417%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 79.008152, Locate on 5 Epoch.
+The Current Best Test Result: precision = 74.498313%  recall = 74.326719% , f-score = 74.412417%
+Test Time 46.016
+save best model to ./Save_BModel/ner_model.pt
+
+## The 6 Epoch, All 1000 Epochs ! ##
+now lr is 0.012
+batch_count = [100] , loss is 35.803223, [TAG-ACC is 76.250000%]
+batch_count = [200] , loss is 6.042480, [TAG-ACC is 86.734694%]
+batch_count = [300] , loss is 11.713135, [TAG-ACC is 85.714286%]
+batch_count = [400] , loss is 30.073242, [TAG-ACC is 83.125000%]
+batch_count = [500] , loss is 19.482910, [TAG-ACC is 84.210526%]
+batch_count = [600] , loss is 30.675537, [TAG-ACC is 77.600000%]
+batch_count = [700] , loss is 25.792969, [TAG-ACC is 82.312925%]
+batch_count = [800] , loss is 36.231201, [TAG-ACC is 83.766234%]
+batch_count = [900] , loss is 37.075684, [TAG-ACC is 80.740741%]
+batch_count = [1000] , loss is 15.430664, [TAG-ACC is 91.191710%]
+batch_count = [1100] , loss is 10.005127, [TAG-ACC is 90.361446%]
+batch_count = [1200] , loss is 28.518555, [TAG-ACC is 80.172414%]
+batch_count = [1300] , loss is 20.900879, [TAG-ACC is 90.109890%]
+batch_count = [1400] , loss is 13.005371, [TAG-ACC is 90.000000%]
+Train Time 821.211
+Dev eval: precision = 81.618799%  recall = 78.926107% , f-score = 80.249872%,  [TAG-ACC = 0.000000%]
+Dev Time 44.982
+Test eval: precision = 75.933309%  recall = 74.238129% , f-score = 75.076151%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 80.249872, Locate on 6 Epoch.
+The Current Best Test Result: precision = 75.933309%  recall = 74.238129% , f-score = 75.076151%
+Test Time 44.001
+save best model to ./Save_BModel/ner_model.pt
+
+## The 7 Epoch, All 1000 Epochs ! ##
+now lr is 0.011538461538461537
+batch_count = [100] , loss is 8.708496, [TAG-ACC is 90.441176%]
+batch_count = [200] , loss is 13.087402, [TAG-ACC is 88.805970%]
+batch_count = [300] , loss is 2.060059, [TAG-ACC is 91.964286%]
+batch_count = [400] , loss is 7.343750, [TAG-ACC is 82.352941%]
+batch_count = [500] , loss is 18.770020, [TAG-ACC is 85.517241%]
+batch_count = [600] , loss is 44.652832, [TAG-ACC is 82.706767%]
+batch_count = [700] , loss is 37.271484, [TAG-ACC is 82.248521%]
+batch_count = [800] , loss is 16.263672, [TAG-ACC is 87.074830%]
+batch_count = [900] , loss is 20.990723, [TAG-ACC is 85.906040%]
+batch_count = [1000] , loss is 34.563477, [TAG-ACC is 85.000000%]
+batch_count = [1100] , loss is 33.362793, [TAG-ACC is 81.111111%]
+batch_count = [1200] , loss is 18.304688, [TAG-ACC is 86.363636%]
+batch_count = [1300] , loss is 14.903320, [TAG-ACC is 85.271318%]
+batch_count = [1400] , loss is 16.573242, [TAG-ACC is 87.179487%]
+Train Time 772.473
+Dev eval: precision = 80.178511%  recall = 80.138024% , f-score = 80.158262%,  [TAG-ACC = 0.000000%]
+Dev Time 46.332
+Test eval: precision = 74.135835%  recall = 75.620128% , f-score = 74.870625%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 80.249872, Locate on 6 Epoch.
+The Current Best Test Result: precision = 75.933309%  recall = 74.238129% , f-score = 75.076151%
+Test Time 48.672
+Dev Has Not Promote 1 / 10
+
+## The 8 Epoch, All 1000 Epochs ! ##
+now lr is 0.01111111111111111
+batch_count = [100] , loss is 11.545166, [TAG-ACC is 78.125000%]
+batch_count = [200] , loss is 16.748047, [TAG-ACC is 87.283237%]
+batch_count = [300] , loss is 30.081055, [TAG-ACC is 80.681818%]
+batch_count = [400] , loss is 14.539551, [TAG-ACC is 85.436893%]
+batch_count = [500] , loss is 14.506836, [TAG-ACC is 82.278481%]
+batch_count = [600] , loss is 26.375000, [TAG-ACC is 83.050847%]
+batch_count = [700] , loss is 11.218750, [TAG-ACC is 82.653061%]
+batch_count = [800] , loss is 8.953613, [TAG-ACC is 88.888889%]
+batch_count = [900] , loss is 15.361572, [TAG-ACC is 83.695652%]
+batch_count = [1000] , loss is 8.712891, [TAG-ACC is 87.962963%]
+batch_count = [1100] , loss is 33.100098, [TAG-ACC is 79.113924%]
+batch_count = [1200] , loss is 10.691895, [TAG-ACC is 87.272727%]
+batch_count = [1300] , loss is 10.212402, [TAG-ACC is 90.780142%]
+batch_count = [1400] , loss is 27.624023, [TAG-ACC is 85.802469%]
+Train Time 811.372
+Dev eval: precision = 82.165715%  recall = 79.952870% , f-score = 81.044190%,  [TAG-ACC = 0.000000%]
+Dev Time 45.489
+Test eval: precision = 76.410532%  recall = 75.584692% , f-score = 75.995368%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 81.044190, Locate on 8 Epoch.
+The Current Best Test Result: precision = 76.410532%  recall = 75.584692% , f-score = 75.995368%
+Test Time 40.367
+save best model to ./Save_BModel/ner_model.pt
+
+## The 9 Epoch, All 1000 Epochs ! ##
+now lr is 0.010714285714285714
+batch_count = [100] , loss is 25.256348, [TAG-ACC is 86.187845%]
+batch_count = [200] , loss is 8.763184, [TAG-ACC is 89.473684%]
+batch_count = [300] , loss is 11.282959, [TAG-ACC is 85.227273%]
+batch_count = [400] , loss is 25.710938, [TAG-ACC is 88.669951%]
+batch_count = [500] , loss is 10.218750, [TAG-ACC is 85.714286%]
+batch_count = [600] , loss is 17.916992, [TAG-ACC is 85.875706%]
+batch_count = [700] , loss is 12.255371, [TAG-ACC is 84.112150%]
+batch_count = [800] , loss is 10.809082, [TAG-ACC is 86.718750%]
+batch_count = [900] , loss is 25.095703, [TAG-ACC is 87.165775%]
+batch_count = [1000] , loss is 10.411133, [TAG-ACC is 91.812865%]
+batch_count = [1100] , loss is 25.226074, [TAG-ACC is 86.060606%]
+batch_count = [1200] , loss is 11.460449, [TAG-ACC is 84.375000%]
+batch_count = [1300] , loss is 12.342285, [TAG-ACC is 88.372093%]
+batch_count = [1400] , loss is 12.177490, [TAG-ACC is 84.042553%]
+Train Time 795.785
+Dev eval: precision = 82.460058%  recall = 80.794479% , f-score = 81.618772%,  [TAG-ACC = 0.000000%]
+Dev Time 44.067
+Test eval: precision = 76.622916%  recall = 76.541460% , f-score = 76.582166%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 81.618772, Locate on 9 Epoch.
+The Current Best Test Result: precision = 76.622916%  recall = 76.541460% , f-score = 76.582166%
+Test Time 47.146
+save best model to ./Save_BModel/ner_model.pt
+
+## The 10 Epoch, All 1000 Epochs ! ##
+now lr is 0.010344827586206896
+batch_count = [100] , loss is 8.563965, [TAG-ACC is 90.825688%]
+batch_count = [200] , loss is 30.339844, [TAG-ACC is 89.673913%]
+batch_count = [300] , loss is 21.157227, [TAG-ACC is 82.323232%]
+batch_count = [400] , loss is 11.805176, [TAG-ACC is 89.629630%]
+batch_count = [500] , loss is 14.351562, [TAG-ACC is 83.823529%]
+batch_count = [600] , loss is 12.132324, [TAG-ACC is 90.780142%]
+batch_count = [700] , loss is 18.268555, [TAG-ACC is 83.529412%]
+batch_count = [800] , loss is 23.998535, [TAG-ACC is 82.380952%]
+batch_count = [900] , loss is 30.324707, [TAG-ACC is 80.740741%]
+batch_count = [1000] , loss is 18.386719, [TAG-ACC is 86.363636%]
+batch_count = [1100] , loss is 15.836914, [TAG-ACC is 90.384615%]
+batch_count = [1200] , loss is 26.312988, [TAG-ACC is 81.871345%]
+batch_count = [1300] , loss is 5.789062, [TAG-ACC is 89.285714%]
+batch_count = [1400] , loss is 14.730957, [TAG-ACC is 85.714286%]
+Train Time 791.664
+Dev eval: precision = 82.908032%  recall = 81.484599% , f-score = 82.190153%,  [TAG-ACC = 0.000000%]
+Dev Time 43.391
+Test eval: precision = 76.654249%  recall = 76.559178% , f-score = 76.606684%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 82.190153, Locate on 10 Epoch.
+The Current Best Test Result: precision = 76.654249%  recall = 76.559178% , f-score = 76.606684%
+Test Time 41.913
+save best model to ./Save_BModel/ner_model.pt
+
+## The 11 Epoch, All 1000 Epochs ! ##
+now lr is 0.01
+batch_count = [100] , loss is 20.029785, [TAG-ACC is 88.439306%]
+batch_count = [200] , loss is 17.384766, [TAG-ACC is 88.679245%]
+batch_count = [300] , loss is 6.221436, [TAG-ACC is 80.519481%]
+batch_count = [400] , loss is 29.011230, [TAG-ACC is 87.745098%]
+batch_count = [500] , loss is 9.301758, [TAG-ACC is 87.804878%]
+batch_count = [600] , loss is 5.229980, [TAG-ACC is 87.640449%]
+batch_count = [700] , loss is 16.305176, [TAG-ACC is 90.270270%]
+batch_count = [800] , loss is 9.227539, [TAG-ACC is 86.666667%]
+batch_count = [900] , loss is 29.728027, [TAG-ACC is 85.714286%]
+batch_count = [1000] , loss is 19.314453, [TAG-ACC is 85.869565%]
+batch_count = [1100] , loss is 21.822754, [TAG-ACC is 86.574074%]
+batch_count = [1200] , loss is 13.013672, [TAG-ACC is 90.598291%]
+batch_count = [1300] , loss is 21.681152, [TAG-ACC is 82.278481%]
+batch_count = [1400] , loss is 13.391357, [TAG-ACC is 93.577982%]
+Train Time 755.328
+Dev eval: precision = 84.079861%  recall = 81.518263% , f-score = 82.779250%,  [TAG-ACC = 0.000000%]
+Dev Time 42.740
+Test eval: precision = 77.508091%  recall = 76.381999% , f-score = 76.940925%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 82.779250, Locate on 11 Epoch.
+The Current Best Test Result: precision = 77.508091%  recall = 76.381999% , f-score = 76.940925%
+Test Time 44.962
+save best model to ./Save_BModel/ner_model.pt
+
+## The 12 Epoch, All 1000 Epochs ! ##
+now lr is 0.009677419354838708
+batch_count = [100] , loss is 9.766113, [TAG-ACC is 84.946237%]
+batch_count = [200] , loss is 17.239990, [TAG-ACC is 86.111111%]
+batch_count = [300] , loss is 11.726562, [TAG-ACC is 88.505747%]
+batch_count = [400] , loss is 20.833008, [TAG-ACC is 89.784946%]
+batch_count = [500] , loss is 9.677734, [TAG-ACC is 92.105263%]
+batch_count = [600] , loss is 18.110840, [TAG-ACC is 89.285714%]
+batch_count = [700] , loss is 15.403809, [TAG-ACC is 93.010753%]
+batch_count = [800] , loss is 16.631836, [TAG-ACC is 88.505747%]
+batch_count = [900] , loss is 12.092285, [TAG-ACC is 93.630573%]
+batch_count = [1000] , loss is 15.944336, [TAG-ACC is 79.347826%]
+batch_count = [1100] , loss is 23.330078, [TAG-ACC is 89.189189%]
+batch_count = [1200] , loss is 16.060547, [TAG-ACC is 87.283237%]
+batch_count = [1300] , loss is 7.608398, [TAG-ACC is 88.750000%]
+batch_count = [1400] , loss is 17.939941, [TAG-ACC is 78.000000%]
+Train Time 767.932
+Dev eval: precision = 83.251399%  recall = 82.662851% , f-score = 82.956081%,  [TAG-ACC = 0.000000%]
+Dev Time 42.202
+Test eval: precision = 76.510653%  recall = 77.622254% , f-score = 77.062445%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 82.956081, Locate on 12 Epoch.
+The Current Best Test Result: precision = 76.510653%  recall = 77.622254% , f-score = 77.062445%
+Test Time 42.859
+save best model to ./Save_BModel/ner_model.pt
+
+## The 13 Epoch, All 1000 Epochs ! ##
+now lr is 0.009375
+batch_count = [100] , loss is 14.011719, [TAG-ACC is 87.596899%]
+batch_count = [200] , loss is 7.604492, [TAG-ACC is 94.117647%]
+batch_count = [300] , loss is 14.020020, [TAG-ACC is 86.725664%]
+batch_count = [400] , loss is 12.862305, [TAG-ACC is 87.394958%]
+batch_count = [500] , loss is 21.102539, [TAG-ACC is 89.671362%]
+batch_count = [600] , loss is 18.969238, [TAG-ACC is 89.898990%]
+batch_count = [700] , loss is 15.452148, [TAG-ACC is 87.804878%]
+batch_count = [800] , loss is 9.281738, [TAG-ACC is 94.927536%]
+batch_count = [900] , loss is 13.710938, [TAG-ACC is 86.666667%]
+batch_count = [1000] , loss is 13.187500, [TAG-ACC is 84.523810%]
+batch_count = [1100] , loss is 6.104492, [TAG-ACC is 88.321168%]
+batch_count = [1200] , loss is 29.764648, [TAG-ACC is 85.185185%]
+batch_count = [1300] , loss is 28.266113, [TAG-ACC is 82.258065%]
+batch_count = [1400] , loss is 12.441406, [TAG-ACC is 81.547619%]
+Train Time 762.073
+Dev eval: precision = 84.049502%  recall = 82.309376% , f-score = 83.170338%,  [TAG-ACC = 0.000000%]
+Dev Time 46.264
+Test eval: precision = 78.277886%  recall = 77.958894% , f-score = 78.118065%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 83.170338, Locate on 13 Epoch.
+The Current Best Test Result: precision = 78.277886%  recall = 77.958894% , f-score = 78.118065%
+Test Time 41.953
+save best model to ./Save_BModel/ner_model.pt
+
+## The 14 Epoch, All 1000 Epochs ! ##
+now lr is 0.00909090909090909
+batch_count = [100] , loss is 8.553711, [TAG-ACC is 85.964912%]
+batch_count = [200] , loss is 25.885742, [TAG-ACC is 90.094340%]
+batch_count = [300] , loss is 13.235840, [TAG-ACC is 90.178571%]
+batch_count = [400] , loss is 9.841553, [TAG-ACC is 88.059701%]
+batch_count = [500] , loss is 13.390137, [TAG-ACC is 86.178862%]
+batch_count = [600] , loss is 8.830078, [TAG-ACC is 92.352941%]
+batch_count = [700] , loss is 7.646484, [TAG-ACC is 95.580110%]
+batch_count = [800] , loss is 21.663086, [TAG-ACC is 78.048780%]
+batch_count = [900] , loss is 9.261230, [TAG-ACC is 79.279279%]
+batch_count = [1000] , loss is 16.009766, [TAG-ACC is 90.972222%]
+batch_count = [1100] , loss is 25.175781, [TAG-ACC is 85.833333%]
+batch_count = [1200] , loss is 20.794922, [TAG-ACC is 93.678161%]
+batch_count = [1300] , loss is 11.517212, [TAG-ACC is 78.000000%]
+batch_count = [1400] , loss is 22.325684, [TAG-ACC is 84.615385%]
+Train Time 753.009
+Dev eval: precision = 83.177570%  recall = 82.393536% , f-score = 82.783697%,  [TAG-ACC = 0.000000%]
+Dev Time 46.088
+Test eval: precision = 77.566807%  recall = 78.171510% , f-score = 77.867984%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 83.170338, Locate on 13 Epoch.
+The Current Best Test Result: precision = 78.277886%  recall = 77.958894% , f-score = 78.118065%
+Test Time 46.850
+Dev Has Not Promote 1 / 10
+
+## The 15 Epoch, All 1000 Epochs ! ##
+now lr is 0.008823529411764704
+batch_count = [100] , loss is 22.346191, [TAG-ACC is 84.782609%]
+batch_count = [200] , loss is 9.609863, [TAG-ACC is 90.551181%]
+batch_count = [300] , loss is 3.073608, [TAG-ACC is 85.185185%]
+batch_count = [400] , loss is 27.566406, [TAG-ACC is 81.379310%]
+batch_count = [500] , loss is 11.871582, [TAG-ACC is 85.294118%]
+batch_count = [600] , loss is 15.570312, [TAG-ACC is 90.510949%]
+batch_count = [700] , loss is 25.786133, [TAG-ACC is 82.500000%]
+batch_count = [800] , loss is 18.049316, [TAG-ACC is 86.046512%]
+batch_count = [900] , loss is 16.697266, [TAG-ACC is 91.326531%]
+batch_count = [1000] , loss is 16.759766, [TAG-ACC is 83.453237%]
+batch_count = [1100] , loss is 18.319824, [TAG-ACC is 79.470199%]
+batch_count = [1200] , loss is 14.752930, [TAG-ACC is 92.771084%]
+batch_count = [1300] , loss is 21.058594, [TAG-ACC is 91.366906%]
+batch_count = [1400] , loss is 10.917969, [TAG-ACC is 84.426230%]
+Train Time 764.233
+Dev eval: precision = 84.511901%  recall = 82.477697% , f-score = 83.482409%,  [TAG-ACC = 0.000000%]
+Dev Time 43.038
+Test eval: precision = 78.439462%  recall = 77.480510% , f-score = 77.957037%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 83.482409, Locate on 15 Epoch.
+The Current Best Test Result: precision = 78.439462%  recall = 77.480510% , f-score = 77.957037%
+Test Time 40.421
+save best model to ./Save_BModel/ner_model.pt
+
+## The 16 Epoch, All 1000 Epochs ! ##
+now lr is 0.008571428571428572
+batch_count = [100] , loss is 10.510254, [TAG-ACC is 89.552239%]
+batch_count = [200] , loss is 17.109375, [TAG-ACC is 92.638037%]
+batch_count = [300] , loss is 6.584961, [TAG-ACC is 89.814815%]
+batch_count = [400] , loss is 12.653809, [TAG-ACC is 89.510490%]
+batch_count = [500] , loss is 22.126953, [TAG-ACC is 88.834951%]
+batch_count = [600] , loss is 7.064453, [TAG-ACC is 93.548387%]
+batch_count = [700] , loss is 11.096191, [TAG-ACC is 91.509434%]
+batch_count = [800] , loss is 11.290527, [TAG-ACC is 87.603306%]
+batch_count = [900] , loss is 8.773438, [TAG-ACC is 89.473684%]
+batch_count = [1000] , loss is 6.323242, [TAG-ACC is 92.052980%]
+batch_count = [1100] , loss is 23.705566, [TAG-ACC is 88.359788%]
+batch_count = [1200] , loss is 9.360352, [TAG-ACC is 87.500000%]
+batch_count = [1300] , loss is 19.791016, [TAG-ACC is 91.608392%]
+batch_count = [1400] , loss is 27.229004, [TAG-ACC is 87.179487%]
+Train Time 816.910
+Dev eval: precision = 84.013605%  recall = 83.150985% , f-score = 83.580069%,  [TAG-ACC = 0.000000%]
+Dev Time 50.068
+Test eval: precision = 77.968805%  recall = 77.941176% , f-score = 77.954988%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 83.580069, Locate on 16 Epoch.
+The Current Best Test Result: precision = 77.968805%  recall = 77.941176% , f-score = 77.954988%
+Test Time 45.798
+save best model to ./Save_BModel/ner_model.pt
+
+## The 17 Epoch, All 1000 Epochs ! ##
+now lr is 0.008333333333333333
+batch_count = [100] , loss is 19.265625, [TAG-ACC is 88.811189%]
+batch_count = [200] , loss is 7.859375, [TAG-ACC is 92.857143%]
+batch_count = [300] , loss is 12.479248, [TAG-ACC is 87.943262%]
+batch_count = [400] , loss is 6.711426, [TAG-ACC is 97.000000%]
+batch_count = [500] , loss is 16.339355, [TAG-ACC is 85.416667%]
+batch_count = [600] , loss is 13.739258, [TAG-ACC is 82.500000%]
+batch_count = [700] , loss is 10.645020, [TAG-ACC is 91.818182%]
+batch_count = [800] , loss is 11.862305, [TAG-ACC is 87.735849%]
+batch_count = [900] , loss is 29.496338, [TAG-ACC is 84.615385%]
+batch_count = [1000] , loss is 12.748047, [TAG-ACC is 82.653061%]
+batch_count = [1100] , loss is 23.924316, [TAG-ACC is 84.324324%]
+batch_count = [1200] , loss is 19.219727, [TAG-ACC is 90.967742%]
+batch_count = [1300] , loss is 32.511230, [TAG-ACC is 86.075949%]
+batch_count = [1400] , loss is 14.471191, [TAG-ACC is 85.365854%]
+Train Time 811.866
+Dev eval: precision = 84.107414%  recall = 83.824272% , f-score = 83.965604%,  [TAG-ACC = 0.000000%]
+Dev Time 47.444
+Test eval: precision = 77.779723%  recall = 78.703047% , f-score = 78.238661%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 83.965604, Locate on 17 Epoch.
+The Current Best Test Result: precision = 77.779723%  recall = 78.703047% , f-score = 78.238661%
+Test Time 43.070
+save best model to ./Save_BModel/ner_model.pt
+
+## The 18 Epoch, All 1000 Epochs ! ##
+now lr is 0.008108108108108107
+batch_count = [100] , loss is 7.543945, [TAG-ACC is 86.538462%]
+batch_count = [200] , loss is 7.452148, [TAG-ACC is 93.382353%]
+batch_count = [300] , loss is 5.407227, [TAG-ACC is 90.259740%]
+batch_count = [400] , loss is 15.485352, [TAG-ACC is 94.021739%]
+batch_count = [500] , loss is 7.313477, [TAG-ACC is 83.620690%]
+batch_count = [600] , loss is 7.732422, [TAG-ACC is 90.532544%]
+batch_count = [700] , loss is 10.474609, [TAG-ACC is 89.308176%]
+batch_count = [800] , loss is 6.556641, [TAG-ACC is 83.333333%]
+batch_count = [900] , loss is 40.547363, [TAG-ACC is 83.854167%]
+batch_count = [1000] , loss is 1.233887, [TAG-ACC is 87.619048%]
+batch_count = [1100] , loss is 29.935059, [TAG-ACC is 84.276730%]
+batch_count = [1200] , loss is 10.439453, [TAG-ACC is 83.695652%]
+batch_count = [1300] , loss is 4.607910, [TAG-ACC is 93.589744%]
+batch_count = [1400] , loss is 7.534912, [TAG-ACC is 80.952381%]
+Train Time 758.320
+Dev eval: precision = 84.788201%  recall = 83.218313% , f-score = 83.995923%,  [TAG-ACC = 0.000000%]
+Dev Time 40.461
+Test eval: precision = 78.157848%  recall = 77.728561% , f-score = 77.942613%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 83.995923, Locate on 18 Epoch.
+The Current Best Test Result: precision = 78.157848%  recall = 77.728561% , f-score = 77.942613%
+Test Time 42.670
+save best model to ./Save_BModel/ner_model.pt
+
+## The 19 Epoch, All 1000 Epochs ! ##
+now lr is 0.007894736842105263
+batch_count = [100] , loss is 23.620605, [TAG-ACC is 90.131579%]
+batch_count = [200] , loss is 34.370117, [TAG-ACC is 90.045249%]
+batch_count = [300] , loss is 11.157227, [TAG-ACC is 83.739837%]
+batch_count = [400] , loss is 2.986328, [TAG-ACC is 93.750000%]
+batch_count = [500] , loss is 8.692383, [TAG-ACC is 90.710383%]
+batch_count = [600] , loss is 22.988281, [TAG-ACC is 87.978142%]
+batch_count = [700] , loss is 18.543945, [TAG-ACC is 86.301370%]
+batch_count = [800] , loss is 12.984863, [TAG-ACC is 90.728477%]
+batch_count = [900] , loss is 8.916504, [TAG-ACC is 88.333333%]
+batch_count = [1000] , loss is 7.050049, [TAG-ACC is 85.981308%]
+batch_count = [1100] , loss is 9.987305, [TAG-ACC is 84.536082%]
+batch_count = [1200] , loss is 10.672363, [TAG-ACC is 87.394958%]
+batch_count = [1300] , loss is 9.391113, [TAG-ACC is 85.987261%]
+batch_count = [1400] , loss is 25.910156, [TAG-ACC is 86.111111%]
+Train Time 758.327
+Dev eval: precision = 84.434680%  recall = 84.093587% , f-score = 84.263788%,  [TAG-ACC = 0.000000%]
+Dev Time 43.827
+Test eval: precision = 78.279267%  recall = 78.667612% , f-score = 78.472959%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.263788, Locate on 19 Epoch.
+The Current Best Test Result: precision = 78.279267%  recall = 78.667612% , f-score = 78.472959%
+Test Time 42.020
+save best model to ./Save_BModel/ner_model.pt
+
+## The 20 Epoch, All 1000 Epochs ! ##
+now lr is 0.007692307692307691
+batch_count = [100] , loss is 18.640625, [TAG-ACC is 86.274510%]
+batch_count = [200] , loss is 13.522949, [TAG-ACC is 89.403974%]
+batch_count = [300] , loss is 8.087402, [TAG-ACC is 90.109890%]
+batch_count = [400] , loss is 7.138184, [TAG-ACC is 88.785047%]
+batch_count = [500] , loss is 5.806641, [TAG-ACC is 94.405594%]
+batch_count = [600] , loss is 18.332520, [TAG-ACC is 80.769231%]
+batch_count = [700] , loss is 4.587891, [TAG-ACC is 93.478261%]
+batch_count = [800] , loss is 21.950684, [TAG-ACC is 93.333333%]
+batch_count = [900] , loss is 19.489258, [TAG-ACC is 89.403974%]
+batch_count = [1000] , loss is 7.813477, [TAG-ACC is 92.660550%]
+batch_count = [1100] , loss is 5.464844, [TAG-ACC is 92.700730%]
+batch_count = [1200] , loss is 11.915527, [TAG-ACC is 87.261146%]
+batch_count = [1300] , loss is 11.383789, [TAG-ACC is 89.344262%]
+batch_count = [1400] , loss is 3.747314, [TAG-ACC is 90.140845%]
+Train Time 784.322
+Dev eval: precision = 84.853116%  recall = 84.110419% , f-score = 84.480135%,  [TAG-ACC = 0.000000%]
+Dev Time 44.142
+Test eval: precision = 79.002300%  recall = 79.128278% , f-score = 79.065239%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.480135, Locate on 20 Epoch.
+The Current Best Test Result: precision = 79.002300%  recall = 79.128278% , f-score = 79.065239%
+Test Time 45.303
+save best model to ./Save_BModel/ner_model.pt
+
+## The 21 Epoch, All 1000 Epochs ! ##
+now lr is 0.0075
+batch_count = [100] , loss is 9.416504, [TAG-ACC is 93.706294%]
+batch_count = [200] , loss is 24.553711, [TAG-ACC is 82.812500%]
+batch_count = [300] , loss is 4.083984, [TAG-ACC is 90.588235%]
+batch_count = [400] , loss is 11.279785, [TAG-ACC is 88.181818%]
+batch_count = [500] , loss is 8.060303, [TAG-ACC is 82.142857%]
+batch_count = [600] , loss is 3.683350, [TAG-ACC is 87.022901%]
+batch_count = [700] , loss is 8.871094, [TAG-ACC is 91.156463%]
+batch_count = [800] , loss is 21.696777, [TAG-ACC is 90.000000%]
+batch_count = [900] , loss is 7.041016, [TAG-ACC is 84.946237%]
+batch_count = [1000] , loss is 19.803223, [TAG-ACC is 90.045249%]
+batch_count = [1100] , loss is 4.614746, [TAG-ACC is 93.162393%]
+batch_count = [1200] , loss is 7.423828, [TAG-ACC is 85.534591%]
+batch_count = [1300] , loss is 21.458008, [TAG-ACC is 80.645161%]
+batch_count = [1400] , loss is 25.367188, [TAG-ACC is 83.076923%]
+Train Time 798.413
+Dev eval: precision = 84.760129%  recall = 84.160916% , f-score = 84.459459%,  [TAG-ACC = 0.000000%]
+Dev Time 45.283
+Test eval: precision = 78.761686%  recall = 79.110560% , f-score = 78.935738%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.480135, Locate on 20 Epoch.
+The Current Best Test Result: precision = 79.002300%  recall = 79.128278% , f-score = 79.065239%
+Test Time 48.171
+Dev Has Not Promote 1 / 10
+
+## The 22 Epoch, All 1000 Epochs ! ##
+now lr is 0.007317073170731708
+batch_count = [100] , loss is 15.756836, [TAG-ACC is 90.697674%]
+batch_count = [200] , loss is 19.092773, [TAG-ACC is 87.647059%]
+batch_count = [300] , loss is 37.299805, [TAG-ACC is 89.140271%]
+batch_count = [400] , loss is 9.882324, [TAG-ACC is 90.384615%]
+batch_count = [500] , loss is 17.011230, [TAG-ACC is 96.428571%]
+batch_count = [600] , loss is 26.251953, [TAG-ACC is 83.076923%]
+batch_count = [700] , loss is 11.798340, [TAG-ACC is 92.957746%]
+batch_count = [800] , loss is 2.555176, [TAG-ACC is 88.888889%]
+batch_count = [900] , loss is 21.388672, [TAG-ACC is 91.558442%]
+batch_count = [1000] , loss is 16.033203, [TAG-ACC is 90.697674%]
+batch_count = [1100] , loss is 5.568359, [TAG-ACC is 89.075630%]
+batch_count = [1200] , loss is 20.647461, [TAG-ACC is 86.065574%]
+batch_count = [1300] , loss is 2.725098, [TAG-ACC is 88.000000%]
+batch_count = [1400] , loss is 18.770020, [TAG-ACC is 85.937500%]
+Train Time 765.505
+Dev eval: precision = 85.448335%  recall = 84.211412% , f-score = 84.825365%,  [TAG-ACC = 0.000000%]
+Dev Time 43.780
+Test eval: precision = 79.840000%  recall = 79.571226% , f-score = 79.705386%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.825365, Locate on 22 Epoch.
+The Current Best Test Result: precision = 79.840000%  recall = 79.571226% , f-score = 79.705386%
+Test Time 45.781
+save best model to ./Save_BModel/ner_model.pt
+
+## The 23 Epoch, All 1000 Epochs ! ##
+now lr is 0.007142857142857143
+batch_count = [100] , loss is 7.470215, [TAG-ACC is 92.105263%]
+batch_count = [200] , loss is 7.992188, [TAG-ACC is 93.157895%]
+batch_count = [300] , loss is 21.307129, [TAG-ACC is 87.974684%]
+batch_count = [400] , loss is 4.552490, [TAG-ACC is 93.043478%]
+batch_count = [500] , loss is 13.488770, [TAG-ACC is 92.142857%]
+batch_count = [600] , loss is 24.779297, [TAG-ACC is 79.000000%]
+batch_count = [700] , loss is 12.550293, [TAG-ACC is 91.176471%]
+batch_count = [800] , loss is 16.505859, [TAG-ACC is 92.063492%]
+batch_count = [900] , loss is 8.005371, [TAG-ACC is 90.277778%]
+batch_count = [1000] , loss is 14.504395, [TAG-ACC is 83.870968%]
+batch_count = [1100] , loss is 5.604492, [TAG-ACC is 90.082645%]
+batch_count = [1200] , loss is 5.869385, [TAG-ACC is 90.350877%]
+batch_count = [1300] , loss is 18.691895, [TAG-ACC is 92.307692%]
+batch_count = [1400] , loss is 9.755371, [TAG-ACC is 93.798450%]
+Train Time 793.963
+Dev eval: precision = 85.034705%  recall = 84.548056% , f-score = 84.790682%,  [TAG-ACC = 0.000000%]
+Dev Time 48.062
+Test eval: precision = 79.140996%  recall = 79.659816% , f-score = 79.399558%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.825365, Locate on 22 Epoch.
+The Current Best Test Result: precision = 79.840000%  recall = 79.571226% , f-score = 79.705386%
+Test Time 42.837
+Dev Has Not Promote 1 / 10
+
+## The 24 Epoch, All 1000 Epochs ! ##
+now lr is 0.00697674418604651
+batch_count = [100] , loss is 11.927734, [TAG-ACC is 93.298969%]
+batch_count = [200] , loss is 10.377930, [TAG-ACC is 88.505747%]
+batch_count = [300] , loss is 4.748047, [TAG-ACC is 92.682927%]
+batch_count = [400] , loss is 11.776611, [TAG-ACC is 92.307692%]
+batch_count = [500] , loss is 15.073242, [TAG-ACC is 86.178862%]
+batch_count = [600] , loss is 11.741211, [TAG-ACC is 93.661972%]
+batch_count = [700] , loss is 28.096680, [TAG-ACC is 78.846154%]
+batch_count = [800] , loss is 6.339844, [TAG-ACC is 89.552239%]
+batch_count = [900] , loss is 15.897461, [TAG-ACC is 93.617021%]
+batch_count = [1000] , loss is 23.579590, [TAG-ACC is 91.623037%]
+batch_count = [1100] , loss is 5.119629, [TAG-ACC is 93.382353%]
+batch_count = [1200] , loss is 18.046387, [TAG-ACC is 87.943262%]
+batch_count = [1300] , loss is 7.776367, [TAG-ACC is 90.099010%]
+batch_count = [1400] , loss is 21.773438, [TAG-ACC is 84.507042%]
+Train Time 788.207
+Dev eval: precision = 84.435863%  recall = 84.649049% , f-score = 84.542322%,  [TAG-ACC = 0.000000%]
+Dev Time 45.260
+Test eval: precision = 78.151114%  recall = 79.535790% , f-score = 78.837373%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.825365, Locate on 22 Epoch.
+The Current Best Test Result: precision = 79.840000%  recall = 79.571226% , f-score = 79.705386%
+Test Time 42.657
+Dev Has Not Promote 2 / 10
+
+## The 25 Epoch, All 1000 Epochs ! ##
+now lr is 0.006818181818181817
+batch_count = [100] , loss is 12.249023, [TAG-ACC is 91.240876%]
+batch_count = [200] , loss is 12.202148, [TAG-ACC is 90.350877%]
+batch_count = [300] , loss is 5.784668, [TAG-ACC is 90.384615%]
+batch_count = [400] , loss is 11.457031, [TAG-ACC is 92.307692%]
+batch_count = [500] , loss is 8.137207, [TAG-ACC is 88.148148%]
+batch_count = [600] , loss is 7.387695, [TAG-ACC is 89.361702%]
+batch_count = [700] , loss is 3.739258, [TAG-ACC is 95.081967%]
+batch_count = [800] , loss is 8.028320, [TAG-ACC is 86.956522%]
+batch_count = [900] , loss is 9.644043, [TAG-ACC is 92.857143%]
+batch_count = [1000] , loss is 20.394043, [TAG-ACC is 82.285714%]
+batch_count = [1100] , loss is 16.330566, [TAG-ACC is 92.452830%]
+batch_count = [1200] , loss is 12.479004, [TAG-ACC is 93.793103%]
+batch_count = [1300] , loss is 18.832520, [TAG-ACC is 90.625000%]
+batch_count = [1400] , loss is 9.400391, [TAG-ACC is 83.838384%]
+Train Time 792.087
+Dev eval: precision = 84.569983%  recall = 84.413398% , f-score = 84.491618%,  [TAG-ACC = 0.000000%]
+Dev Time 49.250
+Test eval: precision = 79.067321%  recall = 79.907867% , f-score = 79.485372%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.825365, Locate on 22 Epoch.
+The Current Best Test Result: precision = 79.840000%  recall = 79.571226% , f-score = 79.705386%
+Test Time 43.447
+Dev Has Not Promote 3 / 10
+
+## The 26 Epoch, All 1000 Epochs ! ##
+now lr is 0.006666666666666666
+batch_count = [100] , loss is 21.223633, [TAG-ACC is 85.714286%]
+batch_count = [200] , loss is 4.201660, [TAG-ACC is 91.803279%]
+batch_count = [300] , loss is 17.759766, [TAG-ACC is 80.672269%]
+batch_count = [400] , loss is 13.549805, [TAG-ACC is 91.111111%]
+batch_count = [500] , loss is 0.645996, [TAG-ACC is 96.296296%]
+batch_count = [600] , loss is 17.259277, [TAG-ACC is 91.346154%]
+batch_count = [700] , loss is 11.229980, [TAG-ACC is 92.485549%]
+batch_count = [800] , loss is 14.042480, [TAG-ACC is 89.830508%]
+batch_count = [900] , loss is 2.786865, [TAG-ACC is 90.322581%]
+batch_count = [1000] , loss is 10.583008, [TAG-ACC is 90.683230%]
+batch_count = [1100] , loss is 17.094727, [TAG-ACC is 91.666667%]
+batch_count = [1200] , loss is 9.587402, [TAG-ACC is 91.935484%]
+batch_count = [1300] , loss is 11.424805, [TAG-ACC is 91.472868%]
+batch_count = [1400] , loss is 11.114746, [TAG-ACC is 92.441860%]
+Train Time 782.482
+Dev eval: precision = 84.594640%  recall = 84.480727% , f-score = 84.537645%,  [TAG-ACC = 0.000000%]
+Dev Time 42.927
+Test eval: precision = 78.714859%  recall = 79.872431% , f-score = 79.289420%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.825365, Locate on 22 Epoch.
+The Current Best Test Result: precision = 79.840000%  recall = 79.571226% , f-score = 79.705386%
+Test Time 43.397
+Dev Has Not Promote 4 / 10
+
+## The 27 Epoch, All 1000 Epochs ! ##
+now lr is 0.006521739130434783
+batch_count = [100] , loss is 5.787109, [TAG-ACC is 85.869565%]
+batch_count = [200] , loss is 1.343018, [TAG-ACC is 88.888889%]
+batch_count = [300] , loss is 18.728027, [TAG-ACC is 87.301587%]
+batch_count = [400] , loss is 12.164062, [TAG-ACC is 92.121212%]
+batch_count = [500] , loss is 13.805176, [TAG-ACC is 80.606061%]
+batch_count = [600] , loss is 7.042969, [TAG-ACC is 91.596639%]
+batch_count = [700] , loss is 17.203125, [TAG-ACC is 89.495798%]
+batch_count = [800] , loss is 5.125488, [TAG-ACC is 91.176471%]
+batch_count = [900] , loss is 15.087402, [TAG-ACC is 79.508197%]
+batch_count = [1000] , loss is 14.071289, [TAG-ACC is 87.912088%]
+batch_count = [1100] , loss is 10.159668, [TAG-ACC is 91.095890%]
+batch_count = [1200] , loss is 4.109375, [TAG-ACC is 95.934959%]
+batch_count = [1300] , loss is 3.444824, [TAG-ACC is 94.736842%]
+batch_count = [1400] , loss is 5.642578, [TAG-ACC is 91.428571%]
+Train Time 770.540
+Dev eval: precision = 84.485950%  recall = 84.514392% , f-score = 84.500168%,  [TAG-ACC = 0.000000%]
+Dev Time 41.565
+Test eval: precision = 79.349537%  recall = 80.403969% , f-score = 79.873273%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.825365, Locate on 22 Epoch.
+The Current Best Test Result: precision = 79.840000%  recall = 79.571226% , f-score = 79.705386%
+Test Time 47.520
+Dev Has Not Promote 5 / 10
+
+## The 28 Epoch, All 1000 Epochs ! ##
+now lr is 0.006382978723404255
+batch_count = [100] , loss is 6.538574, [TAG-ACC is 91.911765%]
+batch_count = [200] , loss is 22.504395, [TAG-ACC is 80.740741%]
+batch_count = [300] , loss is 3.232422, [TAG-ACC is 84.269663%]
+batch_count = [400] , loss is 8.497559, [TAG-ACC is 83.870968%]
+batch_count = [500] , loss is 8.894043, [TAG-ACC is 91.472868%]
+batch_count = [600] , loss is 10.493652, [TAG-ACC is 85.815603%]
+batch_count = [700] , loss is 5.951660, [TAG-ACC is 90.410959%]
+batch_count = [800] , loss is 5.071777, [TAG-ACC is 86.991870%]
+batch_count = [900] , loss is 15.469238, [TAG-ACC is 88.596491%]
+batch_count = [1000] , loss is 16.300293, [TAG-ACC is 80.808081%]
+batch_count = [1100] , loss is 10.455566, [TAG-ACC is 93.750000%]
+batch_count = [1200] , loss is 10.986572, [TAG-ACC is 83.333333%]
+batch_count = [1300] , loss is 37.903320, [TAG-ACC is 84.895833%]
+batch_count = [1400] , loss is 9.976074, [TAG-ACC is 91.729323%]
+Train Time 761.145
+Dev eval: precision = 85.096316%  recall = 84.766874% , f-score = 84.931276%,  [TAG-ACC = 0.000000%]
+Dev Time 49.017
+Test eval: precision = 79.329707%  recall = 80.102764% , f-score = 79.714361%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 84.931276, Locate on 28 Epoch.
+The Current Best Test Result: precision = 79.329707%  recall = 80.102764% , f-score = 79.714361%
+Test Time 45.151
+save best model to ./Save_BModel/ner_model.pt
+
+## The 29 Epoch, All 1000 Epochs ! ##
+now lr is 0.006249999999999999
+batch_count = [100] , loss is 9.241211, [TAG-ACC is 93.209877%]
+batch_count = [200] , loss is 9.298340, [TAG-ACC is 91.176471%]
+batch_count = [300] , loss is 14.149414, [TAG-ACC is 86.400000%]
+batch_count = [400] , loss is 5.583740, [TAG-ACC is 88.764045%]
+batch_count = [500] , loss is 21.155762, [TAG-ACC is 80.851064%]
+batch_count = [600] , loss is 5.468262, [TAG-ACC is 91.666667%]
+batch_count = [700] , loss is 5.310547, [TAG-ACC is 93.650794%]
+batch_count = [800] , loss is 10.264648, [TAG-ACC is 91.666667%]
+batch_count = [900] , loss is 11.741211, [TAG-ACC is 89.308176%]
+batch_count = [1000] , loss is 12.173340, [TAG-ACC is 91.818182%]
+batch_count = [1100] , loss is 45.612793, [TAG-ACC is 82.352941%]
+batch_count = [1200] , loss is 13.744141, [TAG-ACC is 88.392857%]
+batch_count = [1300] , loss is 3.446411, [TAG-ACC is 89.230769%]
+batch_count = [1400] , loss is 13.460449, [TAG-ACC is 83.333333%]
+Train Time 834.291
+Dev eval: precision = 85.332883%  recall = 85.002525% , f-score = 85.167383%,  [TAG-ACC = 0.000000%]
+Dev Time 47.059
+Test eval: precision = 79.537021%  recall = 79.748405% , f-score = 79.642573%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.167383, Locate on 29 Epoch.
+The Current Best Test Result: precision = 79.537021%  recall = 79.748405% , f-score = 79.642573%
+Test Time 44.257
+save best model to ./Save_BModel/ner_model.pt
+
+## The 30 Epoch, All 1000 Epochs ! ##
+now lr is 0.006122448979591836
+batch_count = [100] , loss is 9.999023, [TAG-ACC is 87.142857%]
+batch_count = [200] , loss is 22.138184, [TAG-ACC is 80.000000%]
+batch_count = [300] , loss is 7.045166, [TAG-ACC is 81.914894%]
+batch_count = [400] , loss is 11.924072, [TAG-ACC is 88.405797%]
+batch_count = [500] , loss is 0.817871, [TAG-ACC is 96.296296%]
+batch_count = [600] , loss is 3.396240, [TAG-ACC is 94.594595%]
+batch_count = [700] , loss is 8.381836, [TAG-ACC is 87.000000%]
+batch_count = [800] , loss is 14.470215, [TAG-ACC is 85.294118%]
+batch_count = [900] , loss is 16.159180, [TAG-ACC is 87.769784%]
+batch_count = [1000] , loss is 4.122070, [TAG-ACC is 90.000000%]
+batch_count = [1100] , loss is 10.578613, [TAG-ACC is 90.298507%]
+batch_count = [1200] , loss is 5.509277, [TAG-ACC is 91.452991%]
+batch_count = [1300] , loss is 24.980469, [TAG-ACC is 84.967320%]
+batch_count = [1400] , loss is 4.874512, [TAG-ACC is 90.551181%]
+Train Time 751.427
+Dev eval: precision = 85.047043%  recall = 85.204511% , f-score = 85.125704%,  [TAG-ACC = 0.000000%]
+Dev Time 47.947
+Test eval: precision = 79.052282%  recall = 80.102764% , f-score = 79.574056%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.167383, Locate on 29 Epoch.
+The Current Best Test Result: precision = 79.537021%  recall = 79.748405% , f-score = 79.642573%
+Test Time 40.966
+Dev Has Not Promote 1 / 10
+
+## The 31 Epoch, All 1000 Epochs ! ##
+now lr is 0.006
+batch_count = [100] , loss is 5.083496, [TAG-ACC is 84.210526%]
+batch_count = [200] , loss is 6.732910, [TAG-ACC is 84.831461%]
+batch_count = [300] , loss is 8.937012, [TAG-ACC is 92.857143%]
+batch_count = [400] , loss is 11.604004, [TAG-ACC is 94.610778%]
+batch_count = [500] , loss is 13.720703, [TAG-ACC is 94.573643%]
+batch_count = [600] , loss is 5.746094, [TAG-ACC is 93.421053%]
+batch_count = [700] , loss is 3.424072, [TAG-ACC is 92.248062%]
+batch_count = [800] , loss is 8.835449, [TAG-ACC is 94.478528%]
+batch_count = [900] , loss is 5.687500, [TAG-ACC is 79.545455%]
+batch_count = [1000] , loss is 4.534668, [TAG-ACC is 91.428571%]
+batch_count = [1100] , loss is 3.113037, [TAG-ACC is 88.421053%]
+batch_count = [1200] , loss is 12.415527, [TAG-ACC is 84.693878%]
+batch_count = [1300] , loss is 13.595215, [TAG-ACC is 88.690476%]
+batch_count = [1400] , loss is 7.567383, [TAG-ACC is 81.132075%]
+Train Time 757.434
+Dev eval: precision = 85.377358%  recall = 85.305504% , f-score = 85.341416%,  [TAG-ACC = 0.000000%]
+Dev Time 39.758
+Test eval: precision = 79.481339%  recall = 80.368533% , f-score = 79.922474%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.341416, Locate on 31 Epoch.
+The Current Best Test Result: precision = 79.481339%  recall = 80.368533% , f-score = 79.922474%
+Test Time 40.082
+save best model to ./Save_BModel/ner_model.pt
+
+## The 32 Epoch, All 1000 Epochs ! ##
+now lr is 0.0058823529411764705
+batch_count = [100] , loss is 12.355469, [TAG-ACC is 90.277778%]
+batch_count = [200] , loss is 11.785645, [TAG-ACC is 89.130435%]
+batch_count = [300] , loss is 28.500488, [TAG-ACC is 81.250000%]
+batch_count = [400] , loss is 8.064453, [TAG-ACC is 91.176471%]
+batch_count = [500] , loss is 17.229004, [TAG-ACC is 81.294964%]
+batch_count = [600] , loss is 4.185059, [TAG-ACC is 90.243902%]
+batch_count = [700] , loss is 16.606445, [TAG-ACC is 93.491124%]
+batch_count = [800] , loss is 10.192383, [TAG-ACC is 91.111111%]
+batch_count = [900] , loss is 12.579102, [TAG-ACC is 88.709677%]
+batch_count = [1000] , loss is 32.409180, [TAG-ACC is 89.560440%]
+batch_count = [1100] , loss is 10.128418, [TAG-ACC is 93.037975%]
+batch_count = [1200] , loss is 3.872070, [TAG-ACC is 96.000000%]
+batch_count = [1300] , loss is 17.067871, [TAG-ACC is 92.982456%]
+batch_count = [1400] , loss is 15.711426, [TAG-ACC is 94.267516%]
+Train Time 764.988
+Dev eval: precision = 85.702214%  recall = 85.356001% , f-score = 85.528757%,  [TAG-ACC = 0.000000%]
+Dev Time 41.756
+Test eval: precision = 79.738793%  recall = 80.049610% , f-score = 79.893899%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.528757, Locate on 32 Epoch.
+The Current Best Test Result: precision = 79.738793%  recall = 80.049610% , f-score = 79.893899%
+Test Time 41.144
+save best model to ./Save_BModel/ner_model.pt
+
+## The 33 Epoch, All 1000 Epochs ! ##
+now lr is 0.005769230769230769
+batch_count = [100] , loss is 17.145508, [TAG-ACC is 85.714286%]
+batch_count = [200] , loss is 3.128906, [TAG-ACC is 97.520661%]
+batch_count = [300] , loss is 30.082520, [TAG-ACC is 85.365854%]
+batch_count = [400] , loss is 15.933105, [TAG-ACC is 88.535032%]
+batch_count = [500] , loss is 0.560059, [TAG-ACC is 95.238095%]
+batch_count = [600] , loss is 9.113770, [TAG-ACC is 86.624204%]
+batch_count = [700] , loss is 9.490234, [TAG-ACC is 87.654321%]
+batch_count = [800] , loss is 11.795898, [TAG-ACC is 86.363636%]
+batch_count = [900] , loss is 10.692383, [TAG-ACC is 86.413043%]
+batch_count = [1000] , loss is 21.096680, [TAG-ACC is 88.235294%]
+batch_count = [1100] , loss is 0.784912, [TAG-ACC is 93.150685%]
+batch_count = [1200] , loss is 3.837402, [TAG-ACC is 85.534591%]
+batch_count = [1300] , loss is 2.681641, [TAG-ACC is 89.440994%]
+batch_count = [1400] , loss is 13.686523, [TAG-ACC is 89.898990%]
+Train Time 757.373
+Dev eval: precision = 85.769882%  recall = 85.322336% , f-score = 85.545524%,  [TAG-ACC = 0.000000%]
+Dev Time 48.019
+Test eval: precision = 79.971691%  recall = 80.085046% , f-score = 80.028329%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.545524, Locate on 33 Epoch.
+The Current Best Test Result: precision = 79.971691%  recall = 80.085046% , f-score = 80.028329%
+Test Time 40.386
+save best model to ./Save_BModel/ner_model.pt
+
+## The 34 Epoch, All 1000 Epochs ! ##
+now lr is 0.005660377358490565
+batch_count = [100] , loss is 11.348633, [TAG-ACC is 91.534392%]
+batch_count = [200] , loss is 30.526367, [TAG-ACC is 90.909091%]
+batch_count = [300] , loss is 12.804688, [TAG-ACC is 91.304348%]
+batch_count = [400] , loss is 11.982910, [TAG-ACC is 93.037975%]
+batch_count = [500] , loss is 9.733398, [TAG-ACC is 95.067265%]
+batch_count = [600] , loss is 7.374023, [TAG-ACC is 87.272727%]
+batch_count = [700] , loss is 8.900879, [TAG-ACC is 91.338583%]
+batch_count = [800] , loss is 1.776367, [TAG-ACC is 92.741935%]
+batch_count = [900] , loss is 14.104492, [TAG-ACC is 87.922705%]
+batch_count = [1000] , loss is 5.477051, [TAG-ACC is 88.970588%]
+batch_count = [1100] , loss is 21.895996, [TAG-ACC is 90.871369%]
+batch_count = [1200] , loss is 24.013672, [TAG-ACC is 84.242424%]
+batch_count = [1300] , loss is 12.101074, [TAG-ACC is 84.962406%]
+batch_count = [1400] , loss is 14.020996, [TAG-ACC is 92.788462%]
+Train Time 784.508
+Dev eval: precision = 85.632571%  recall = 85.675812% , f-score = 85.654186%,  [TAG-ACC = 0.000000%]
+Dev Time 46.833
+Test eval: precision = 79.702016%  recall = 80.563430% , f-score = 80.130408%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.654186, Locate on 34 Epoch.
+The Current Best Test Result: precision = 79.702016%  recall = 80.563430% , f-score = 80.130408%
+Test Time 42.144
+save best model to ./Save_BModel/ner_model.pt
+
+## The 35 Epoch, All 1000 Epochs ! ##
+now lr is 0.005555555555555555
+batch_count = [100] , loss is 13.687988, [TAG-ACC is 87.165775%]
+batch_count = [200] , loss is 15.005371, [TAG-ACC is 87.719298%]
+batch_count = [300] , loss is 16.188965, [TAG-ACC is 87.878788%]
+batch_count = [400] , loss is 11.539551, [TAG-ACC is 88.524590%]
+batch_count = [500] , loss is 10.443359, [TAG-ACC is 90.833333%]
+batch_count = [600] , loss is 27.778320, [TAG-ACC is 91.124260%]
+batch_count = [700] , loss is 6.612305, [TAG-ACC is 90.666667%]
+batch_count = [800] , loss is 8.595215, [TAG-ACC is 92.452830%]
+batch_count = [900] , loss is 10.736816, [TAG-ACC is 88.181818%]
+batch_count = [1000] , loss is 8.108887, [TAG-ACC is 90.196078%]
+batch_count = [1100] , loss is 10.893555, [TAG-ACC is 92.356688%]
+batch_count = [1200] , loss is 8.968994, [TAG-ACC is 92.187500%]
+batch_count = [1300] , loss is 9.375000, [TAG-ACC is 94.366197%]
+batch_count = [1400] , loss is 13.959961, [TAG-ACC is 89.473684%]
+Train Time 794.651
+Dev eval: precision = 85.446880%  recall = 85.288672% , f-score = 85.367703%,  [TAG-ACC = 0.000000%]
+Dev Time 45.839
+Test eval: precision = 79.764209%  recall = 80.315379% , f-score = 80.038845%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.654186, Locate on 34 Epoch.
+The Current Best Test Result: precision = 79.702016%  recall = 80.563430% , f-score = 80.130408%
+Test Time 47.349
+Dev Has Not Promote 1 / 10
+
+## The 36 Epoch, All 1000 Epochs ! ##
+now lr is 0.005454545454545454
+batch_count = [100] , loss is 12.945312, [TAG-ACC is 86.607143%]
+batch_count = [200] , loss is 9.416504, [TAG-ACC is 89.017341%]
+batch_count = [300] , loss is 11.329102, [TAG-ACC is 89.781022%]
+batch_count = [400] , loss is 7.789062, [TAG-ACC is 92.372881%]
+batch_count = [500] , loss is 4.439453, [TAG-ACC is 93.693694%]
+batch_count = [600] , loss is 4.549316, [TAG-ACC is 96.261682%]
+batch_count = [700] , loss is 9.011230, [TAG-ACC is 87.500000%]
+batch_count = [800] , loss is 7.115723, [TAG-ACC is 91.935484%]
+batch_count = [900] , loss is 14.898926, [TAG-ACC is 88.202247%]
+batch_count = [1000] , loss is 8.613281, [TAG-ACC is 95.811518%]
+batch_count = [1100] , loss is 2.085938, [TAG-ACC is 91.812865%]
+batch_count = [1200] , loss is 19.961914, [TAG-ACC is 86.111111%]
+batch_count = [1300] , loss is 11.547363, [TAG-ACC is 85.156250%]
+batch_count = [1400] , loss is 4.735352, [TAG-ACC is 96.078431%]
+Train Time 789.865
+Dev eval: precision = 85.347001%  recall = 85.490658% , f-score = 85.418769%,  [TAG-ACC = 0.000000%]
+Dev Time 48.691
+Test eval: precision = 79.537896%  recall = 80.510276% , f-score = 80.021132%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.654186, Locate on 34 Epoch.
+The Current Best Test Result: precision = 79.702016%  recall = 80.563430% , f-score = 80.130408%
+Test Time 46.290
+Dev Has Not Promote 2 / 10
+
+## The 37 Epoch, All 1000 Epochs ! ##
+now lr is 0.005357142857142857
+batch_count = [100] , loss is 7.814941, [TAG-ACC is 92.452830%]
+batch_count = [200] , loss is 13.877441, [TAG-ACC is 79.166667%]
+batch_count = [300] , loss is 12.216797, [TAG-ACC is 89.000000%]
+batch_count = [400] , loss is 15.521484, [TAG-ACC is 88.888889%]
+batch_count = [500] , loss is 21.572266, [TAG-ACC is 85.039370%]
+batch_count = [600] , loss is 17.253906, [TAG-ACC is 84.722222%]
+batch_count = [700] , loss is 12.942383, [TAG-ACC is 90.506329%]
+batch_count = [800] , loss is 11.043457, [TAG-ACC is 88.034188%]
+batch_count = [900] , loss is 4.202148, [TAG-ACC is 87.037037%]
+batch_count = [1000] , loss is 22.493652, [TAG-ACC is 88.888889%]
+batch_count = [1100] , loss is 14.395508, [TAG-ACC is 85.858586%]
+batch_count = [1200] , loss is 12.761719, [TAG-ACC is 84.920635%]
+batch_count = [1300] , loss is 22.334473, [TAG-ACC is 90.725806%]
+batch_count = [1400] , loss is 19.064941, [TAG-ACC is 88.826816%]
+Train Time 805.777
+Dev eval: precision = 85.900034%  recall = 85.625316% , f-score = 85.762455%,  [TAG-ACC = 0.000000%]
+Dev Time 46.703
+Test eval: precision = 79.901356%  recall = 80.368533% , f-score = 80.134264%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.762455, Locate on 37 Epoch.
+The Current Best Test Result: precision = 79.901356%  recall = 80.368533% , f-score = 80.134264%
+Test Time 44.573
+save best model to ./Save_BModel/ner_model.pt
+
+## The 38 Epoch, All 1000 Epochs ! ##
+now lr is 0.005263157894736842
+batch_count = [100] , loss is 4.995605, [TAG-ACC is 97.333333%]
+batch_count = [200] , loss is 3.754395, [TAG-ACC is 91.935484%]
+batch_count = [300] , loss is 12.974121, [TAG-ACC is 90.909091%]
+batch_count = [400] , loss is 1.643555, [TAG-ACC is 98.136646%]
+batch_count = [500] , loss is 3.865723, [TAG-ACC is 95.428571%]
+batch_count = [600] , loss is 16.460449, [TAG-ACC is 92.763158%]
+batch_count = [700] , loss is 2.513672, [TAG-ACC is 91.666667%]
+batch_count = [800] , loss is 7.083496, [TAG-ACC is 89.726027%]
+batch_count = [900] , loss is 2.894043, [TAG-ACC is 94.400000%]
+batch_count = [1000] , loss is 7.537598, [TAG-ACC is 91.443850%]
+batch_count = [1100] , loss is 20.924316, [TAG-ACC is 86.666667%]
+batch_count = [1200] , loss is 0.561035, [TAG-ACC is 91.111111%]
+batch_count = [1300] , loss is 6.571289, [TAG-ACC is 91.203704%]
+batch_count = [1400] , loss is 14.976562, [TAG-ACC is 89.560440%]
+Train Time 801.393
+Dev eval: precision = 85.642233%  recall = 85.743141% , f-score = 85.692657%,  [TAG-ACC = 0.000000%]
+Dev Time 46.434
+Test eval: precision = 79.673799%  recall = 80.492558% , f-score = 80.081086%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.762455, Locate on 37 Epoch.
+The Current Best Test Result: precision = 79.901356%  recall = 80.368533% , f-score = 80.134264%
+Test Time 48.953
+Dev Has Not Promote 1 / 10
+
+## The 39 Epoch, All 1000 Epochs ! ##
+now lr is 0.005172413793103447
+batch_count = [100] , loss is 3.749512, [TAG-ACC is 91.397849%]
+batch_count = [200] , loss is 7.032715, [TAG-ACC is 90.000000%]
+batch_count = [300] , loss is 13.351562, [TAG-ACC is 84.070796%]
+batch_count = [400] , loss is 8.140625, [TAG-ACC is 90.109890%]
+batch_count = [500] , loss is 9.379883, [TAG-ACC is 92.307692%]
+batch_count = [600] , loss is 8.763184, [TAG-ACC is 89.380531%]
+batch_count = [700] , loss is 16.535645, [TAG-ACC is 94.285714%]
+batch_count = [800] , loss is 10.029785, [TAG-ACC is 79.464286%]
+batch_count = [900] , loss is 12.270020, [TAG-ACC is 87.857143%]
+batch_count = [1000] , loss is 19.573730, [TAG-ACC is 88.349515%]
+batch_count = [1100] , loss is 4.336426, [TAG-ACC is 93.750000%]
+batch_count = [1200] , loss is 23.802734, [TAG-ACC is 84.375000%]
+batch_count = [1300] , loss is 1.929688, [TAG-ACC is 94.495413%]
+batch_count = [1400] , loss is 10.220703, [TAG-ACC is 96.478873%]
+Train Time 810.543
+Dev eval: precision = 85.755178%  recall = 85.726309% , f-score = 85.740741%,  [TAG-ACC = 0.000000%]
+Dev Time 45.284
+Test eval: precision = 80.091212%  recall = 80.900071% , f-score = 80.493610%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 85.762455, Locate on 37 Epoch.
+The Current Best Test Result: precision = 79.901356%  recall = 80.368533% , f-score = 80.134264%
+Test Time 46.356
+Dev Has Not Promote 2 / 10
+
+## The 40 Epoch, All 1000 Epochs ! ##
+now lr is 0.005084745762711864
+batch_count = [100] , loss is 2.883789, [TAG-ACC is 92.660550%]
+batch_count = [200] , loss is 10.619141, [TAG-ACC is 90.140845%]
+batch_count = [300] , loss is 6.479492, [TAG-ACC is 96.273292%]
+batch_count = [400] , loss is 27.975586, [TAG-ACC is 84.137931%]
+batch_count = [500] , loss is 24.351562, [TAG-ACC is 84.545455%]
+batch_count = [600] , loss is 12.742188, [TAG-ACC is 90.659341%]
+batch_count = [700] , loss is 1.727539, [TAG-ACC is 93.650794%]
+batch_count = [800] , loss is 8.593262, [TAG-ACC is 90.062112%]
+batch_count = [900] , loss is 9.633789, [TAG-ACC is 94.300518%]
+batch_count = [1000] , loss is 18.237793, [TAG-ACC is 89.473684%]
+batch_count = [1100] , loss is 8.733887, [TAG-ACC is 93.121693%]
+batch_count = [1200] , loss is 12.651855, [TAG-ACC is 89.595376%]
+batch_count = [1300] , loss is 6.575684, [TAG-ACC is 88.524590%]
+batch_count = [1400] , loss is 7.822266, [TAG-ACC is 93.700787%]
+Train Time 809.294
+Dev eval: precision = 86.140617%  recall = 85.995624% , f-score = 86.068059%,  [TAG-ACC = 0.000000%]
+Dev Time 49.128
+Test eval: precision = 80.087719%  recall = 80.882353% , f-score = 80.483075%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.068059, Locate on 40 Epoch.
+The Current Best Test Result: precision = 80.087719%  recall = 80.882353% , f-score = 80.483075%
+Test Time 51.788
+save best model to ./Save_BModel/ner_model.pt
+
+## The 41 Epoch, All 1000 Epochs ! ##
+now lr is 0.005
+batch_count = [100] , loss is 7.058594, [TAG-ACC is 90.963855%]
+batch_count = [200] , loss is 7.120117, [TAG-ACC is 96.638655%]
+batch_count = [300] , loss is 8.315918, [TAG-ACC is 87.845304%]
+batch_count = [400] , loss is 17.170898, [TAG-ACC is 94.196429%]
+batch_count = [500] , loss is 4.279785, [TAG-ACC is 94.545455%]
+batch_count = [600] , loss is 4.049805, [TAG-ACC is 88.000000%]
+batch_count = [700] , loss is 4.296021, [TAG-ACC is 87.692308%]
+batch_count = [800] , loss is 3.021484, [TAG-ACC is 97.080292%]
+batch_count = [900] , loss is 14.443359, [TAG-ACC is 94.478528%]
+batch_count = [1000] , loss is 7.821777, [TAG-ACC is 95.266272%]
+batch_count = [1100] , loss is 3.602539, [TAG-ACC is 91.089109%]
+batch_count = [1200] , loss is 2.700195, [TAG-ACC is 97.278912%]
+batch_count = [1300] , loss is 3.307617, [TAG-ACC is 91.860465%]
+batch_count = [1400] , loss is 13.552002, [TAG-ACC is 85.981308%]
+Train Time 841.842
+Dev eval: precision = 85.966683%  recall = 85.995624% , f-score = 85.981151%,  [TAG-ACC = 0.000000%]
+Dev Time 51.066
+Test eval: precision = 79.996497%  recall = 80.917789% , f-score = 80.454505%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.068059, Locate on 40 Epoch.
+The Current Best Test Result: precision = 80.087719%  recall = 80.882353% , f-score = 80.483075%
+Test Time 45.805
+Dev Has Not Promote 1 / 10
+
+## The 42 Epoch, All 1000 Epochs ! ##
+now lr is 0.0049180327868852455
+batch_count = [100] , loss is 16.107910, [TAG-ACC is 86.624204%]
+batch_count = [200] , loss is 6.565430, [TAG-ACC is 88.775510%]
+batch_count = [300] , loss is 2.231934, [TAG-ACC is 96.116505%]
+batch_count = [400] , loss is 11.482910, [TAG-ACC is 92.016807%]
+batch_count = [500] , loss is 12.984131, [TAG-ACC is 79.487179%]
+batch_count = [600] , loss is 16.376953, [TAG-ACC is 85.416667%]
+batch_count = [700] , loss is 13.225098, [TAG-ACC is 89.814815%]
+batch_count = [800] , loss is 10.666504, [TAG-ACC is 92.462312%]
+batch_count = [900] , loss is 5.797852, [TAG-ACC is 87.878788%]
+batch_count = [1000] , loss is 4.317383, [TAG-ACC is 88.095238%]
+batch_count = [1100] , loss is 15.784180, [TAG-ACC is 87.730061%]
+batch_count = [1200] , loss is 10.560547, [TAG-ACC is 90.517241%]
+batch_count = [1300] , loss is 5.362793, [TAG-ACC is 91.666667%]
+batch_count = [1400] , loss is 8.806152, [TAG-ACC is 90.756303%]
+Train Time 816.408
+Dev eval: precision = 85.419463%  recall = 85.692644% , f-score = 85.555836%,  [TAG-ACC = 0.000000%]
+Dev Time 47.915
+Test eval: precision = 79.926496%  recall = 80.917789% , f-score = 80.419088%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.068059, Locate on 40 Epoch.
+The Current Best Test Result: precision = 80.087719%  recall = 80.882353% , f-score = 80.483075%
+Test Time 44.274
+Dev Has Not Promote 2 / 10
+
+## The 43 Epoch, All 1000 Epochs ! ##
+now lr is 0.004838709677419354
+batch_count = [100] , loss is 20.334473, [TAG-ACC is 93.956044%]
+batch_count = [200] , loss is 16.976074, [TAG-ACC is 86.290323%]
+batch_count = [300] , loss is 18.455078, [TAG-ACC is 90.756303%]
+batch_count = [400] , loss is 17.636230, [TAG-ACC is 87.428571%]
+batch_count = [500] , loss is 6.405762, [TAG-ACC is 93.467337%]
+batch_count = [600] , loss is 2.458984, [TAG-ACC is 88.679245%]
+batch_count = [700] , loss is 6.356445, [TAG-ACC is 88.541667%]
+batch_count = [800] , loss is 2.887695, [TAG-ACC is 89.610390%]
+batch_count = [900] , loss is 11.618652, [TAG-ACC is 86.407767%]
+batch_count = [1000] , loss is 6.581055, [TAG-ACC is 94.021739%]
+batch_count = [1100] , loss is 8.258057, [TAG-ACC is 88.571429%]
+batch_count = [1200] , loss is 6.517578, [TAG-ACC is 92.258065%]
+batch_count = [1300] , loss is 11.721191, [TAG-ACC is 87.394958%]
+batch_count = [1400] , loss is 14.401855, [TAG-ACC is 80.701754%]
+Train Time 770.989
+Dev eval: precision = 85.981151%  recall = 85.995624% , f-score = 85.988387%,  [TAG-ACC = 0.000000%]
+Dev Time 41.537
+Test eval: precision = 80.291075%  recall = 81.130404% , f-score = 80.708557%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.068059, Locate on 40 Epoch.
+The Current Best Test Result: precision = 80.087719%  recall = 80.882353% , f-score = 80.483075%
+Test Time 41.521
+Dev Has Not Promote 3 / 10
+
+## The 44 Epoch, All 1000 Epochs ! ##
+now lr is 0.0047619047619047615
+batch_count = [100] , loss is 5.759766, [TAG-ACC is 91.472868%]
+batch_count = [200] , loss is 11.126465, [TAG-ACC is 90.062112%]
+batch_count = [300] , loss is 6.036621, [TAG-ACC is 86.725664%]
+batch_count = [400] , loss is 5.767090, [TAG-ACC is 91.964286%]
+batch_count = [500] , loss is 1.271484, [TAG-ACC is 94.630872%]
+batch_count = [600] , loss is 7.792480, [TAG-ACC is 92.523364%]
+batch_count = [700] , loss is 16.268066, [TAG-ACC is 90.070922%]
+batch_count = [800] , loss is 19.349121, [TAG-ACC is 91.176471%]
+batch_count = [900] , loss is 9.864258, [TAG-ACC is 95.428571%]
+batch_count = [1000] , loss is 5.813721, [TAG-ACC is 89.915966%]
+batch_count = [1100] , loss is 21.520508, [TAG-ACC is 80.000000%]
+batch_count = [1200] , loss is 14.878418, [TAG-ACC is 87.500000%]
+batch_count = [1300] , loss is 7.102539, [TAG-ACC is 94.478528%]
+batch_count = [1400] , loss is 15.370117, [TAG-ACC is 91.666667%]
+Train Time 742.304
+Dev eval: precision = 86.122792%  recall = 86.180778% , f-score = 86.151775%,  [TAG-ACC = 0.000000%]
+Dev Time 42.433
+Test eval: precision = 80.059368%  recall = 81.236712% , f-score = 80.643743%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.151775, Locate on 44 Epoch.
+The Current Best Test Result: precision = 80.059368%  recall = 81.236712% , f-score = 80.643743%
+Test Time 43.296
+save best model to ./Save_BModel/ner_model.pt
+
+## The 45 Epoch, All 1000 Epochs ! ##
+now lr is 0.0046875
+batch_count = [100] , loss is 4.085449, [TAG-ACC is 98.039216%]
+batch_count = [200] , loss is 4.697266, [TAG-ACC is 95.804196%]
+batch_count = [300] , loss is 10.072266, [TAG-ACC is 90.259740%]
+batch_count = [400] , loss is 20.007812, [TAG-ACC is 87.837838%]
+batch_count = [500] , loss is 9.630859, [TAG-ACC is 91.954023%]
+batch_count = [600] , loss is 6.358398, [TAG-ACC is 83.870968%]
+batch_count = [700] , loss is 4.945312, [TAG-ACC is 93.452381%]
+batch_count = [800] , loss is 9.260742, [TAG-ACC is 89.256198%]
+batch_count = [900] , loss is 3.990234, [TAG-ACC is 91.735537%]
+batch_count = [1000] , loss is 2.358398, [TAG-ACC is 96.000000%]
+batch_count = [1100] , loss is 10.109863, [TAG-ACC is 93.298969%]
+batch_count = [1200] , loss is 8.812988, [TAG-ACC is 93.055556%]
+batch_count = [1300] , loss is 22.477539, [TAG-ACC is 85.148515%]
+batch_count = [1400] , loss is 12.092285, [TAG-ACC is 93.548387%]
+Train Time 730.956
+Dev eval: precision = 86.099481%  recall = 86.534253% , f-score = 86.316320%,  [TAG-ACC = 0.000000%]
+Dev Time 42.535
+Test eval: precision = 79.885257%  recall = 81.413891% , f-score = 80.642331%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.316320, Locate on 45 Epoch.
+The Current Best Test Result: precision = 79.885257%  recall = 81.413891% , f-score = 80.642331%
+Test Time 41.907
+save best model to ./Save_BModel/ner_model.pt
+
+## The 46 Epoch, All 1000 Epochs ! ##
+now lr is 0.004615384615384615
+batch_count = [100] , loss is 9.816406, [TAG-ACC is 87.586207%]
+batch_count = [200] , loss is 12.961426, [TAG-ACC is 83.443709%]
+batch_count = [300] , loss is 14.821289, [TAG-ACC is 93.037975%]
+batch_count = [400] , loss is 14.285645, [TAG-ACC is 80.337079%]
+batch_count = [500] , loss is 10.334473, [TAG-ACC is 89.375000%]
+batch_count = [600] , loss is 4.477051, [TAG-ACC is 91.925466%]
+batch_count = [700] , loss is 21.019531, [TAG-ACC is 83.098592%]
+batch_count = [800] , loss is 5.801270, [TAG-ACC is 95.541401%]
+batch_count = [900] , loss is 17.569336, [TAG-ACC is 89.142857%]
+batch_count = [1000] , loss is 10.073242, [TAG-ACC is 79.130435%]
+batch_count = [1100] , loss is 4.251709, [TAG-ACC is 91.089109%]
+batch_count = [1200] , loss is 7.479980, [TAG-ACC is 90.756303%]
+batch_count = [1300] , loss is 2.733398, [TAG-ACC is 97.402597%]
+batch_count = [1400] , loss is 12.339355, [TAG-ACC is 92.207792%]
+Train Time 743.116
+Dev eval: precision = 85.915257%  recall = 86.349099% , f-score = 86.131632%,  [TAG-ACC = 0.000000%]
+Dev Time 41.514
+Test eval: precision = 80.024339%  recall = 81.555634% , f-score = 80.782731%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.316320, Locate on 45 Epoch.
+The Current Best Test Result: precision = 79.885257%  recall = 81.413891% , f-score = 80.642331%
+Test Time 40.481
+Dev Has Not Promote 1 / 10
+
+## The 47 Epoch, All 1000 Epochs ! ##
+now lr is 0.004545454545454545
+batch_count = [100] , loss is 6.785645, [TAG-ACC is 96.153846%]
+batch_count = [200] , loss is 2.315430, [TAG-ACC is 95.575221%]
+batch_count = [300] , loss is 11.738281, [TAG-ACC is 93.525180%]
+batch_count = [400] , loss is 21.409180, [TAG-ACC is 83.333333%]
+batch_count = [500] , loss is 5.480469, [TAG-ACC is 89.041096%]
+batch_count = [600] , loss is 3.913574, [TAG-ACC is 94.512195%]
+batch_count = [700] , loss is 15.724121, [TAG-ACC is 90.131579%]
+batch_count = [800] , loss is 15.230469, [TAG-ACC is 92.771084%]
+batch_count = [900] , loss is 6.190918, [TAG-ACC is 90.804598%]
+batch_count = [1000] , loss is 23.357910, [TAG-ACC is 86.857143%]
+batch_count = [1100] , loss is 5.357666, [TAG-ACC is 92.086331%]
+batch_count = [1200] , loss is 8.498535, [TAG-ACC is 95.360825%]
+batch_count = [1300] , loss is 7.489746, [TAG-ACC is 92.485549%]
+batch_count = [1400] , loss is 4.841797, [TAG-ACC is 93.788820%]
+Train Time 750.497
+Dev eval: precision = 86.469595%  recall = 86.163945% , f-score = 86.316499%,  [TAG-ACC = 0.000000%]
+Dev Time 45.195
+Test eval: precision = 80.347734%  recall = 81.059532% , f-score = 80.702064%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.316499, Locate on 47 Epoch.
+The Current Best Test Result: precision = 80.347734%  recall = 81.059532% , f-score = 80.702064%
+Test Time 39.810
+save best model to ./Save_BModel/ner_model.pt
+
+## The 48 Epoch, All 1000 Epochs ! ##
+now lr is 0.004477611940298507
+batch_count = [100] , loss is 5.676758, [TAG-ACC is 91.489362%]
+batch_count = [200] , loss is 16.839844, [TAG-ACC is 84.705882%]
+batch_count = [300] , loss is 2.625000, [TAG-ACC is 98.373984%]
+batch_count = [400] , loss is 7.493164, [TAG-ACC is 91.346154%]
+batch_count = [500] , loss is 1.604492, [TAG-ACC is 88.695652%]
+batch_count = [600] , loss is 7.125000, [TAG-ACC is 90.909091%]
+batch_count = [700] , loss is 17.872559, [TAG-ACC is 86.021505%]
+batch_count = [800] , loss is 5.744141, [TAG-ACC is 90.322581%]
+batch_count = [900] , loss is 9.366211, [TAG-ACC is 92.079208%]
+batch_count = [1000] , loss is 7.409668, [TAG-ACC is 91.150442%]
+batch_count = [1100] , loss is 11.186523, [TAG-ACC is 95.673077%]
+batch_count = [1200] , loss is 4.294678, [TAG-ACC is 95.714286%]
+batch_count = [1300] , loss is 13.298828, [TAG-ACC is 87.248322%]
+batch_count = [1400] , loss is 5.575684, [TAG-ACC is 87.407407%]
+Train Time 775.338
+Dev eval: precision = 86.379687%  recall = 86.466925% , f-score = 86.423284%,  [TAG-ACC = 0.000000%]
+Dev Time 48.125
+Test eval: precision = 80.276514%  recall = 81.272147% , f-score = 80.771263%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.423284, Locate on 48 Epoch.
+The Current Best Test Result: precision = 80.276514%  recall = 81.272147% , f-score = 80.771263%
+Test Time 41.226
+save best model to ./Save_BModel/ner_model.pt
+
+## The 49 Epoch, All 1000 Epochs ! ##
+now lr is 0.004411764705882352
+batch_count = [100] , loss is 8.814453, [TAG-ACC is 94.117647%]
+batch_count = [200] , loss is 13.964844, [TAG-ACC is 89.523810%]
+batch_count = [300] , loss is 14.395508, [TAG-ACC is 85.443038%]
+batch_count = [400] , loss is 9.614258, [TAG-ACC is 88.571429%]
+batch_count = [500] , loss is 9.760742, [TAG-ACC is 95.000000%]
+batch_count = [600] , loss is 11.728516, [TAG-ACC is 92.134831%]
+batch_count = [700] , loss is 5.628418, [TAG-ACC is 94.258373%]
+batch_count = [800] , loss is 2.709473, [TAG-ACC is 94.623656%]
+batch_count = [900] , loss is 21.004883, [TAG-ACC is 85.915493%]
+batch_count = [1000] , loss is 12.564453, [TAG-ACC is 85.714286%]
+batch_count = [1100] , loss is 8.745117, [TAG-ACC is 90.151515%]
+batch_count = [1200] , loss is 6.549805, [TAG-ACC is 89.041096%]
+batch_count = [1300] , loss is 18.471191, [TAG-ACC is 89.830508%]
+batch_count = [1400] , loss is 16.170410, [TAG-ACC is 91.216216%]
+Train Time 785.335
+Dev eval: precision = 86.309424%  recall = 86.483757% , f-score = 86.396502%,  [TAG-ACC = 0.000000%]
+Dev Time 47.242
+Test eval: precision = 80.341582%  recall = 81.679660% , f-score = 81.005096%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.423284, Locate on 48 Epoch.
+The Current Best Test Result: precision = 80.276514%  recall = 81.272147% , f-score = 80.771263%
+Test Time 41.489
+Dev Has Not Promote 1 / 10
+
+## The 50 Epoch, All 1000 Epochs ! ##
+now lr is 0.004347826086956521
+batch_count = [100] , loss is 2.075195, [TAG-ACC is 95.151515%]
+batch_count = [200] , loss is 4.345215, [TAG-ACC is 93.798450%]
+batch_count = [300] , loss is 1.907227, [TAG-ACC is 91.724138%]
+batch_count = [400] , loss is 12.581543, [TAG-ACC is 93.333333%]
+batch_count = [500] , loss is 25.306641, [TAG-ACC is 86.206897%]
+batch_count = [600] , loss is 4.602539, [TAG-ACC is 81.547619%]
+batch_count = [700] , loss is 7.517334, [TAG-ACC is 89.361702%]
+batch_count = [800] , loss is 5.059082, [TAG-ACC is 86.407767%]
+batch_count = [900] , loss is 10.928711, [TAG-ACC is 89.610390%]
+batch_count = [1000] , loss is 5.304688, [TAG-ACC is 85.897436%]
+batch_count = [1100] , loss is 9.017578, [TAG-ACC is 94.630872%]
+batch_count = [1200] , loss is 13.609375, [TAG-ACC is 89.247312%]
+batch_count = [1300] , loss is 2.474609, [TAG-ACC is 87.671233%]
+batch_count = [1400] , loss is 30.166016, [TAG-ACC is 91.818182%]
+Train Time 771.203
+Dev eval: precision = 86.767198%  recall = 86.197610% , f-score = 86.481466%,  [TAG-ACC = 0.000000%]
+Dev Time 45.382
+Test eval: precision = 81.113074%  recall = 81.343019% , f-score = 81.227884%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.481466, Locate on 50 Epoch.
+The Current Best Test Result: precision = 81.113074%  recall = 81.343019% , f-score = 81.227884%
+Test Time 46.824
+save best model to ./Save_BModel/ner_model.pt
+
+## The 51 Epoch, All 1000 Epochs ! ##
+now lr is 0.004285714285714286
+batch_count = [100] , loss is 9.714844, [TAG-ACC is 92.810458%]
+batch_count = [200] , loss is 10.944336, [TAG-ACC is 90.977444%]
+batch_count = [300] , loss is 15.321289, [TAG-ACC is 91.735537%]
+batch_count = [400] , loss is 12.059570, [TAG-ACC is 85.161290%]
+batch_count = [500] , loss is 4.728516, [TAG-ACC is 90.000000%]
+batch_count = [600] , loss is 5.641602, [TAG-ACC is 92.156863%]
+batch_count = [700] , loss is 2.028809, [TAG-ACC is 85.840708%]
+batch_count = [800] , loss is 1.976074, [TAG-ACC is 85.937500%]
+batch_count = [900] , loss is 8.099609, [TAG-ACC is 94.936709%]
+batch_count = [1000] , loss is 6.197266, [TAG-ACC is 93.103448%]
+batch_count = [1100] , loss is 10.091797, [TAG-ACC is 92.410714%]
+batch_count = [1200] , loss is 5.995605, [TAG-ACC is 88.148148%]
+batch_count = [1300] , loss is 5.737305, [TAG-ACC is 93.835616%]
+batch_count = [1400] , loss is 8.087402, [TAG-ACC is 88.034188%]
+Train Time 763.230
+Dev eval: precision = 86.276810%  recall = 86.668911% , f-score = 86.472416%,  [TAG-ACC = 0.000000%]
+Dev Time 39.817
+Test eval: precision = 80.216329%  recall = 81.467045% , f-score = 80.836850%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.481466, Locate on 50 Epoch.
+The Current Best Test Result: precision = 81.113074%  recall = 81.343019% , f-score = 81.227884%
+Test Time 39.415
+Dev Has Not Promote 1 / 10
+
+## The 52 Epoch, All 1000 Epochs ! ##
+now lr is 0.004225352112676056
+batch_count = [100] , loss is 10.472900, [TAG-ACC is 89.622642%]
+batch_count = [200] , loss is 13.740723, [TAG-ACC is 83.333333%]
+batch_count = [300] , loss is 11.461914, [TAG-ACC is 85.380117%]
+batch_count = [400] , loss is 8.046875, [TAG-ACC is 92.500000%]
+batch_count = [500] , loss is 17.396973, [TAG-ACC is 91.326531%]
+batch_count = [600] , loss is 5.295410, [TAG-ACC is 95.000000%]
+batch_count = [700] , loss is 4.114258, [TAG-ACC is 94.017094%]
+batch_count = [800] , loss is 7.325928, [TAG-ACC is 88.679245%]
+batch_count = [900] , loss is 17.537598, [TAG-ACC is 92.173913%]
+batch_count = [1000] , loss is 12.639160, [TAG-ACC is 85.430464%]
+batch_count = [1100] , loss is 8.420898, [TAG-ACC is 80.808081%]
+batch_count = [1200] , loss is 15.087402, [TAG-ACC is 85.483871%]
+batch_count = [1300] , loss is 4.080078, [TAG-ACC is 92.307692%]
+batch_count = [1400] , loss is 9.226562, [TAG-ACC is 94.573643%]
+Train Time 762.630
+Dev eval: precision = 86.119927%  recall = 86.786736% , f-score = 86.452046%,  [TAG-ACC = 0.000000%]
+Dev Time 44.220
+Test eval: precision = 79.961832%  recall = 81.661942% , f-score = 80.802945%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.481466, Locate on 50 Epoch.
+The Current Best Test Result: precision = 81.113074%  recall = 81.343019% , f-score = 81.227884%
+Test Time 43.334
+Dev Has Not Promote 2 / 10
+
+## The 53 Epoch, All 1000 Epochs ! ##
+now lr is 0.004166666666666667
+batch_count = [100] , loss is 9.483398, [TAG-ACC is 80.800000%]
+batch_count = [200] , loss is 17.353027, [TAG-ACC is 94.193548%]
+batch_count = [300] , loss is 5.637695, [TAG-ACC is 95.151515%]
+batch_count = [400] , loss is 11.347168, [TAG-ACC is 91.390728%]
+batch_count = [500] , loss is 6.369141, [TAG-ACC is 87.401575%]
+batch_count = [600] , loss is 2.433594, [TAG-ACC is 94.230769%]
+batch_count = [700] , loss is 4.819824, [TAG-ACC is 89.361702%]
+batch_count = [800] , loss is 5.256836, [TAG-ACC is 93.069307%]
+batch_count = [900] , loss is 10.130371, [TAG-ACC is 88.775510%]
+batch_count = [1000] , loss is 8.852539, [TAG-ACC is 90.163934%]
+batch_count = [1100] , loss is 0.860352, [TAG-ACC is 95.000000%]
+batch_count = [1200] , loss is 17.463867, [TAG-ACC is 88.571429%]
+batch_count = [1300] , loss is 11.790039, [TAG-ACC is 92.968750%]
+batch_count = [1400] , loss is 6.455566, [TAG-ACC is 96.694215%]
+Train Time 794.644
+Dev eval: precision = 86.269908%  recall = 86.618414% , f-score = 86.443810%,  [TAG-ACC = 0.000000%]
+Dev Time 47.655
+Test eval: precision = 80.385289%  recall = 81.325301% , f-score = 80.852563%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.481466, Locate on 50 Epoch.
+The Current Best Test Result: precision = 81.113074%  recall = 81.343019% , f-score = 81.227884%
+Test Time 45.164
+Dev Has Not Promote 3 / 10
+
+## The 54 Epoch, All 1000 Epochs ! ##
+now lr is 0.00410958904109589
+batch_count = [100] , loss is 10.575195, [TAG-ACC is 96.052632%]
+batch_count = [200] , loss is 6.570312, [TAG-ACC is 96.923077%]
+batch_count = [300] , loss is 11.033691, [TAG-ACC is 90.857143%]
+batch_count = [400] , loss is 5.125977, [TAG-ACC is 88.275862%]
+batch_count = [500] , loss is 8.513184, [TAG-ACC is 90.526316%]
+batch_count = [600] , loss is 2.907715, [TAG-ACC is 83.647799%]
+batch_count = [700] , loss is 9.735352, [TAG-ACC is 89.473684%]
+batch_count = [800] , loss is 6.595703, [TAG-ACC is 92.857143%]
+batch_count = [900] , loss is 2.200073, [TAG-ACC is 87.878788%]
+batch_count = [1000] , loss is 11.603516, [TAG-ACC is 96.470588%]
+batch_count = [1100] , loss is 5.841797, [TAG-ACC is 92.682927%]
+batch_count = [1200] , loss is 5.207031, [TAG-ACC is 95.270270%]
+batch_count = [1300] , loss is 9.472168, [TAG-ACC is 92.233010%]
+batch_count = [1400] , loss is 6.011719, [TAG-ACC is 93.333333%]
+Train Time 825.762
+Dev eval: precision = 86.213235%  recall = 86.837233% , f-score = 86.524109%,  [TAG-ACC = 0.000000%]
+Dev Time 44.598
+Test eval: precision = 80.097341%  recall = 81.644224% , f-score = 80.863385%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.524109, Locate on 54 Epoch.
+The Current Best Test Result: precision = 80.097341%  recall = 81.644224% , f-score = 80.863385%
+Test Time 45.872
+save best model to ./Save_BModel/ner_model.pt
+
+## The 55 Epoch, All 1000 Epochs ! ##
+now lr is 0.004054054054054053
+batch_count = [100] , loss is 27.165039, [TAG-ACC is 89.814815%]
+batch_count = [200] , loss is 1.045410, [TAG-ACC is 94.354839%]
+batch_count = [300] , loss is 20.482910, [TAG-ACC is 90.833333%]
+batch_count = [400] , loss is 8.654785, [TAG-ACC is 90.769231%]
+batch_count = [500] , loss is 5.441406, [TAG-ACC is 84.466019%]
+batch_count = [600] , loss is 5.134766, [TAG-ACC is 87.500000%]
+batch_count = [700] , loss is 3.395996, [TAG-ACC is 91.666667%]
+batch_count = [800] , loss is 9.517090, [TAG-ACC is 84.536082%]
+batch_count = [900] , loss is 8.254395, [TAG-ACC is 91.304348%]
+batch_count = [1000] , loss is 17.760742, [TAG-ACC is 93.037975%]
+batch_count = [1100] , loss is 11.925781, [TAG-ACC is 91.304348%]
+batch_count = [1200] , loss is 8.914551, [TAG-ACC is 90.076336%]
+batch_count = [1300] , loss is 8.307617, [TAG-ACC is 94.117647%]
+batch_count = [1400] , loss is 11.537598, [TAG-ACC is 92.307692%]
+Train Time 798.219
+Dev eval: precision = 86.504202%  recall = 86.635247% , f-score = 86.569675%,  [TAG-ACC = 0.000000%]
+Dev Time 46.057
+Test eval: precision = 80.741648%  recall = 81.785967% , f-score = 81.260452%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.569675, Locate on 55 Epoch.
+The Current Best Test Result: precision = 80.741648%  recall = 81.785967% , f-score = 81.260452%
+Test Time 49.928
+save best model to ./Save_BModel/ner_model.pt
+
+## The 56 Epoch, All 1000 Epochs ! ##
+now lr is 0.004
+batch_count = [100] , loss is 8.951660, [TAG-ACC is 91.891892%]
+batch_count = [200] , loss is 5.600586, [TAG-ACC is 86.290323%]
+batch_count = [300] , loss is 8.555176, [TAG-ACC is 91.860465%]
+batch_count = [400] , loss is 13.729980, [TAG-ACC is 94.565217%]
+batch_count = [500] , loss is 2.444336, [TAG-ACC is 89.516129%]
+batch_count = [600] , loss is 11.635742, [TAG-ACC is 94.230769%]
+batch_count = [700] , loss is 13.192871, [TAG-ACC is 92.696629%]
+batch_count = [800] , loss is 12.743652, [TAG-ACC is 92.168675%]
+batch_count = [900] , loss is 11.685547, [TAG-ACC is 89.795918%]
+batch_count = [1000] , loss is 6.029297, [TAG-ACC is 90.751445%]
+batch_count = [1100] , loss is 11.347168, [TAG-ACC is 92.307692%]
+batch_count = [1200] , loss is 3.243164, [TAG-ACC is 93.333333%]
+batch_count = [1300] , loss is 15.183594, [TAG-ACC is 87.313433%]
+batch_count = [1400] , loss is 15.108887, [TAG-ACC is 94.117647%]
+Train Time 799.005
+Dev eval: precision = 86.283038%  recall = 86.820401% , f-score = 86.550885%,  [TAG-ACC = 0.000000%]
+Dev Time 45.803
+Test eval: precision = 80.614203%  recall = 81.856839% , f-score = 81.230769%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.569675, Locate on 55 Epoch.
+The Current Best Test Result: precision = 80.741648%  recall = 81.785967% , f-score = 81.260452%
+Test Time 41.720
+Dev Has Not Promote 1 / 10
+
+## The 57 Epoch, All 1000 Epochs ! ##
+now lr is 0.003947368421052631
+batch_count = [100] , loss is 1.294922, [TAG-ACC is 96.875000%]
+batch_count = [200] , loss is 3.070801, [TAG-ACC is 94.392523%]
+batch_count = [300] , loss is 11.509277, [TAG-ACC is 90.070922%]
+batch_count = [400] , loss is 12.351074, [TAG-ACC is 85.000000%]
+batch_count = [500] , loss is 5.589844, [TAG-ACC is 92.771084%]
+batch_count = [600] , loss is 13.061035, [TAG-ACC is 89.361702%]
+batch_count = [700] , loss is 3.090820, [TAG-ACC is 99.173554%]
+batch_count = [800] , loss is 4.775391, [TAG-ACC is 81.521739%]
+batch_count = [900] , loss is 3.613770, [TAG-ACC is 93.452381%]
+batch_count = [1000] , loss is 9.394531, [TAG-ACC is 85.937500%]
+batch_count = [1100] , loss is 20.909180, [TAG-ACC is 89.393939%]
+batch_count = [1200] , loss is 4.511719, [TAG-ACC is 89.743590%]
+batch_count = [1300] , loss is 4.557129, [TAG-ACC is 92.857143%]
+batch_count = [1400] , loss is 3.023438, [TAG-ACC is 90.804598%]
+Train Time 804.653
+Dev eval: precision = 86.279772%  recall = 86.584750% , f-score = 86.431992%,  [TAG-ACC = 0.000000%]
+Dev Time 43.996
+Test eval: precision = 80.638966%  recall = 81.839121% , f-score = 81.234611%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.569675, Locate on 55 Epoch.
+The Current Best Test Result: precision = 80.741648%  recall = 81.785967% , f-score = 81.260452%
+Test Time 46.066
+Dev Has Not Promote 2 / 10
+
+## The 58 Epoch, All 1000 Epochs ! ##
+now lr is 0.0038961038961038957
+batch_count = [100] , loss is 8.612793, [TAG-ACC is 91.549296%]
+batch_count = [200] , loss is 7.204102, [TAG-ACC is 93.413174%]
+batch_count = [300] , loss is 10.045898, [TAG-ACC is 87.647059%]
+batch_count = [400] , loss is 1.557617, [TAG-ACC is 90.000000%]
+batch_count = [500] , loss is 7.777344, [TAG-ACC is 91.935484%]
+batch_count = [600] , loss is 3.643555, [TAG-ACC is 93.243243%]
+batch_count = [700] , loss is 7.817505, [TAG-ACC is 81.333333%]
+batch_count = [800] , loss is 8.001465, [TAG-ACC is 89.041096%]
+batch_count = [900] , loss is 25.184570, [TAG-ACC is 87.261146%]
+batch_count = [1000] , loss is 18.922852, [TAG-ACC is 90.697674%]
+batch_count = [1100] , loss is 2.312500, [TAG-ACC is 94.652406%]
+batch_count = [1200] , loss is 10.133301, [TAG-ACC is 89.893617%]
+batch_count = [1300] , loss is 11.136719, [TAG-ACC is 91.397849%]
+batch_count = [1400] , loss is 6.406006, [TAG-ACC is 92.805755%]
+Train Time 774.581
+Dev eval: precision = 86.802629%  recall = 86.685743% , f-score = 86.744147%,  [TAG-ACC = 0.000000%]
+Dev Time 42.729
+Test eval: precision = 80.682618%  recall = 81.254429% , f-score = 80.967514%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.744147, Locate on 58 Epoch.
+The Current Best Test Result: precision = 80.682618%  recall = 81.254429% , f-score = 80.967514%
+Test Time 41.358
+save best model to ./Save_BModel/ner_model.pt
+
+## The 59 Epoch, All 1000 Epochs ! ##
+now lr is 0.0038461538461538455
+batch_count = [100] , loss is 4.265625, [TAG-ACC is 93.617021%]
+batch_count = [200] , loss is 5.786133, [TAG-ACC is 91.390728%]
+batch_count = [300] , loss is 5.525879, [TAG-ACC is 89.102564%]
+batch_count = [400] , loss is 4.819824, [TAG-ACC is 92.800000%]
+batch_count = [500] , loss is 12.161621, [TAG-ACC is 88.590604%]
+batch_count = [600] , loss is 3.230469, [TAG-ACC is 93.548387%]
+batch_count = [700] , loss is 13.228516, [TAG-ACC is 90.909091%]
+batch_count = [800] , loss is 11.002441, [TAG-ACC is 90.163934%]
+batch_count = [900] , loss is 11.641602, [TAG-ACC is 87.969925%]
+batch_count = [1000] , loss is 9.736572, [TAG-ACC is 90.647482%]
+batch_count = [1100] , loss is 3.200684, [TAG-ACC is 94.852941%]
+batch_count = [1200] , loss is 10.172363, [TAG-ACC is 91.447368%]
+batch_count = [1300] , loss is 4.458740, [TAG-ACC is 78.000000%]
+batch_count = [1400] , loss is 4.461426, [TAG-ACC is 93.382353%]
+Train Time 762.385
+Dev eval: precision = 86.546859%  recall = 86.736240% , f-score = 86.641446%,  [TAG-ACC = 0.000000%]
+Dev Time 44.905
+Test eval: precision = 80.969101%  recall = 81.715096% , f-score = 81.340388%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.744147, Locate on 58 Epoch.
+The Current Best Test Result: precision = 80.682618%  recall = 81.254429% , f-score = 80.967514%
+Test Time 43.335
+Dev Has Not Promote 1 / 10
+
+## The 60 Epoch, All 1000 Epochs ! ##
+now lr is 0.0037974683544303796
+batch_count = [100] , loss is 3.744141, [TAG-ACC is 90.740741%]
+batch_count = [200] , loss is 15.100586, [TAG-ACC is 87.591241%]
+batch_count = [300] , loss is 3.645996, [TAG-ACC is 94.696970%]
+batch_count = [400] , loss is 12.766602, [TAG-ACC is 83.200000%]
+batch_count = [500] , loss is 27.602539, [TAG-ACC is 86.829268%]
+batch_count = [600] , loss is 7.616699, [TAG-ACC is 90.728477%]
+batch_count = [700] , loss is 2.451172, [TAG-ACC is 78.888889%]
+batch_count = [800] , loss is 5.406250, [TAG-ACC is 90.604027%]
+batch_count = [900] , loss is 3.481934, [TAG-ACC is 95.979899%]
+batch_count = [1000] , loss is 0.818359, [TAG-ACC is 91.608392%]
+batch_count = [1100] , loss is 3.490723, [TAG-ACC is 94.366197%]
+batch_count = [1200] , loss is 4.580566, [TAG-ACC is 91.472868%]
+batch_count = [1300] , loss is 17.740723, [TAG-ACC is 81.553398%]
+batch_count = [1400] , loss is 8.122559, [TAG-ACC is 92.737430%]
+Train Time 764.378
+Dev eval: precision = 86.646485%  recall = 86.719408% , f-score = 86.682931%,  [TAG-ACC = 0.000000%]
+Dev Time 43.876
+Test eval: precision = 81.134727%  recall = 81.839121% , f-score = 81.485402%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.744147, Locate on 58 Epoch.
+The Current Best Test Result: precision = 80.682618%  recall = 81.254429% , f-score = 80.967514%
+Test Time 41.435
+Dev Has Not Promote 2 / 10
+
+## The 61 Epoch, All 1000 Epochs ! ##
+now lr is 0.00375
+batch_count = [100] , loss is 4.607910, [TAG-ACC is 94.623656%]
+batch_count = [200] , loss is 1.962402, [TAG-ACC is 93.548387%]
+batch_count = [300] , loss is 2.257812, [TAG-ACC is 93.162393%]
+batch_count = [400] , loss is 11.337402, [TAG-ACC is 92.718447%]
+batch_count = [500] , loss is 13.709961, [TAG-ACC is 95.808383%]
+batch_count = [600] , loss is 6.564941, [TAG-ACC is 90.555556%]
+batch_count = [700] , loss is 3.786621, [TAG-ACC is 96.000000%]
+batch_count = [800] , loss is 10.509277, [TAG-ACC is 89.171975%]
+batch_count = [900] , loss is 24.445312, [TAG-ACC is 86.792453%]
+batch_count = [1000] , loss is 5.943848, [TAG-ACC is 91.608392%]
+batch_count = [1100] , loss is 15.197266, [TAG-ACC is 86.614173%]
+batch_count = [1200] , loss is 4.596680, [TAG-ACC is 90.909091%]
+batch_count = [1300] , loss is 9.120605, [TAG-ACC is 93.220339%]
+batch_count = [1400] , loss is 13.113770, [TAG-ACC is 94.520548%]
+Train Time 795.916
+Dev eval: precision = 86.613908%  recall = 86.584750% , f-score = 86.599327%,  [TAG-ACC = 0.000000%]
+Dev Time 43.581
+Test eval: precision = 80.833187%  recall = 81.821403% , f-score = 81.324293%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.744147, Locate on 58 Epoch.
+The Current Best Test Result: precision = 80.682618%  recall = 81.254429% , f-score = 80.967514%
+Test Time 42.459
+Dev Has Not Promote 3 / 10
+
+## The 62 Epoch, All 1000 Epochs ! ##
+now lr is 0.003703703703703703
+batch_count = [100] , loss is 3.575195, [TAG-ACC is 94.904459%]
+batch_count = [200] , loss is 15.327148, [TAG-ACC is 89.090909%]
+batch_count = [300] , loss is 6.911133, [TAG-ACC is 95.000000%]
+batch_count = [400] , loss is 9.112793, [TAG-ACC is 95.212766%]
+batch_count = [500] , loss is 12.630859, [TAG-ACC is 88.617886%]
+batch_count = [600] , loss is 13.762695, [TAG-ACC is 91.071429%]
+batch_count = [700] , loss is 1.149902, [TAG-ACC is 95.000000%]
+batch_count = [800] , loss is 14.376953, [TAG-ACC is 86.363636%]
+batch_count = [900] , loss is 13.042969, [TAG-ACC is 92.727273%]
+batch_count = [1000] , loss is 12.479492, [TAG-ACC is 91.176471%]
+batch_count = [1100] , loss is 7.960938, [TAG-ACC is 91.573034%]
+batch_count = [1200] , loss is 5.379883, [TAG-ACC is 92.307692%]
+batch_count = [1300] , loss is 14.967285, [TAG-ACC is 86.390533%]
+batch_count = [1400] , loss is 12.512695, [TAG-ACC is 90.134529%]
+Train Time 785.999
+Dev eval: precision = 86.603837%  recall = 86.618414% , f-score = 86.611125%,  [TAG-ACC = 0.000000%]
+Dev Time 41.847
+Test eval: precision = 80.939856%  recall = 81.785967% , f-score = 81.360712%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 86.744147, Locate on 58 Epoch.
+The Current Best Test Result: precision = 80.682618%  recall = 81.254429% , f-score = 80.967514%
+Test Time 41.073
+Dev Has Not Promote 4 / 10
+
+## The 63 Epoch, All 1000 Epochs ! ##
+now lr is 0.003658536585365854
+batch_count = [100] , loss is 5.762695, [TAG-ACC is 91.176471%]
+batch_count = [200] , loss is 8.509766, [TAG-ACC is 88.757396%]
+batch_count = [300] , loss is 15.691895, [TAG-ACC is 86.915888%]
+batch_count = [400] , loss is 5.151367, [TAG-ACC is 95.424837%]
+batch_count = [500] , loss is 2.625488, [TAG-ACC is 93.877551%]
+batch_count = [600] , loss is 9.027344, [TAG-ACC is 92.700730%]
+batch_count = [700] , loss is 8.130859, [TAG-ACC is 90.123457%]
+batch_count = [800] , loss is 6.923828, [TAG-ACC is 95.555556%]
+batch_count = [900] , loss is 9.635742, [TAG-ACC is 91.269841%]
+batch_count = [1000] , loss is 2.670898, [TAG-ACC is 94.927536%]
+batch_count = [1100] , loss is 7.177002, [TAG-ACC is 92.537313%]
+batch_count = [1200] , loss is 0.568359, [TAG-ACC is 96.183206%]
+batch_count = [1300] , loss is 7.806152, [TAG-ACC is 91.452991%]
+batch_count = [1400] , loss is 4.014648, [TAG-ACC is 92.391304%]
+Train Time 757.138
+Dev eval: precision = 86.865472%  recall = 87.274870% , f-score = 87.069689%,  [TAG-ACC = 0.000000%]
+Dev Time 42.241
+Test eval: precision = 80.841774%  recall = 82.016300% , f-score = 81.424802%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.069689, Locate on 63 Epoch.
+The Current Best Test Result: precision = 80.841774%  recall = 82.016300% , f-score = 81.424802%
+Test Time 43.084
+save best model to ./Save_BModel/ner_model.pt
+
+## The 64 Epoch, All 1000 Epochs ! ##
+now lr is 0.003614457831325301
+batch_count = [100] , loss is 11.036621, [TAG-ACC is 91.715976%]
+batch_count = [200] , loss is 2.271973, [TAG-ACC is 94.610778%]
+batch_count = [300] , loss is 16.070801, [TAG-ACC is 88.281250%]
+batch_count = [400] , loss is 5.601807, [TAG-ACC is 83.333333%]
+batch_count = [500] , loss is 19.879883, [TAG-ACC is 82.638889%]
+batch_count = [600] , loss is 4.062012, [TAG-ACC is 93.055556%]
+batch_count = [700] , loss is 4.974609, [TAG-ACC is 90.476190%]
+batch_count = [800] , loss is 4.215820, [TAG-ACC is 93.413174%]
+batch_count = [900] , loss is 11.220215, [TAG-ACC is 91.666667%]
+batch_count = [1000] , loss is 18.037109, [TAG-ACC is 90.865385%]
+batch_count = [1100] , loss is 10.836914, [TAG-ACC is 91.764706%]
+batch_count = [1200] , loss is 2.340820, [TAG-ACC is 92.352941%]
+batch_count = [1300] , loss is 3.924805, [TAG-ACC is 88.297872%]
+batch_count = [1400] , loss is 4.903320, [TAG-ACC is 90.400000%]
+Train Time 766.242
+Dev eval: precision = 86.663320%  recall = 87.173876% , f-score = 86.917848%,  [TAG-ACC = 0.000000%]
+Dev Time 44.602
+Test eval: precision = 80.644599%  recall = 82.016300% , f-score = 81.324666%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.069689, Locate on 63 Epoch.
+The Current Best Test Result: precision = 80.841774%  recall = 82.016300% , f-score = 81.424802%
+Test Time 42.363
+Dev Has Not Promote 1 / 10
+
+## The 65 Epoch, All 1000 Epochs ! ##
+now lr is 0.0035714285714285713
+batch_count = [100] , loss is 7.222168, [TAG-ACC is 92.198582%]
+batch_count = [200] , loss is 2.297852, [TAG-ACC is 96.153846%]
+batch_count = [300] , loss is 10.392578, [TAG-ACC is 96.410256%]
+batch_count = [400] , loss is 11.501465, [TAG-ACC is 95.000000%]
+batch_count = [500] , loss is 4.695801, [TAG-ACC is 95.180723%]
+batch_count = [600] , loss is 11.917480, [TAG-ACC is 88.461538%]
+batch_count = [700] , loss is 4.358398, [TAG-ACC is 88.800000%]
+batch_count = [800] , loss is 9.066406, [TAG-ACC is 92.307692%]
+batch_count = [900] , loss is 0.242676, [TAG-ACC is 93.103448%]
+batch_count = [1000] , loss is 11.183105, [TAG-ACC is 84.545455%]
+batch_count = [1100] , loss is 4.086670, [TAG-ACC is 90.909091%]
+batch_count = [1200] , loss is 19.699219, [TAG-ACC is 82.828283%]
+batch_count = [1300] , loss is 12.365234, [TAG-ACC is 90.370370%]
+batch_count = [1400] , loss is 9.031738, [TAG-ACC is 96.710526%]
+Train Time 770.149
+Dev eval: precision = 87.021743%  recall = 86.904562% , f-score = 86.963113%,  [TAG-ACC = 0.000000%]
+Dev Time 45.624
+Test eval: precision = 81.153576%  recall = 82.016300% , f-score = 81.582658%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.069689, Locate on 63 Epoch.
+The Current Best Test Result: precision = 80.841774%  recall = 82.016300% , f-score = 81.424802%
+Test Time 46.613
+Dev Has Not Promote 2 / 10
+
+## The 66 Epoch, All 1000 Epochs ! ##
+now lr is 0.003529411764705882
+batch_count = [100] , loss is 6.840820, [TAG-ACC is 95.705521%]
+batch_count = [200] , loss is 6.622070, [TAG-ACC is 92.696629%]
+batch_count = [300] , loss is 10.687500, [TAG-ACC is 87.704918%]
+batch_count = [400] , loss is 7.113770, [TAG-ACC is 92.372881%]
+batch_count = [500] , loss is 5.021484, [TAG-ACC is 93.706294%]
+batch_count = [600] , loss is 1.666992, [TAG-ACC is 97.590361%]
+batch_count = [700] , loss is 7.025879, [TAG-ACC is 90.344828%]
+batch_count = [800] , loss is 1.233398, [TAG-ACC is 95.412844%]
+batch_count = [900] , loss is 15.799316, [TAG-ACC is 84.800000%]
+batch_count = [1000] , loss is 6.301758, [TAG-ACC is 94.736842%]
+batch_count = [1100] , loss is 2.069336, [TAG-ACC is 89.719626%]
+batch_count = [1200] , loss is 6.713867, [TAG-ACC is 90.441176%]
+batch_count = [1300] , loss is 2.108398, [TAG-ACC is 93.577982%]
+batch_count = [1400] , loss is 7.307129, [TAG-ACC is 84.482759%]
+Train Time 823.071
+Dev eval: precision = 87.243006%  recall = 87.140212% , f-score = 87.191579%,  [TAG-ACC = 0.000000%]
+Dev Time 48.733
+Test eval: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 43.375
+save best model to ./Save_BModel/ner_model.pt
+
+## The 67 Epoch, All 1000 Epochs ! ##
+now lr is 0.003488372093023255
+batch_count = [100] , loss is 10.123535, [TAG-ACC is 91.071429%]
+batch_count = [200] , loss is 12.559570, [TAG-ACC is 89.880952%]
+batch_count = [300] , loss is 4.292236, [TAG-ACC is 93.518519%]
+batch_count = [400] , loss is 28.550781, [TAG-ACC is 86.631016%]
+batch_count = [500] , loss is 3.335449, [TAG-ACC is 96.407186%]
+batch_count = [600] , loss is 8.383789, [TAG-ACC is 87.647059%]
+batch_count = [700] , loss is 12.044922, [TAG-ACC is 89.115646%]
+batch_count = [800] , loss is 7.134277, [TAG-ACC is 92.913386%]
+batch_count = [900] , loss is 10.677734, [TAG-ACC is 76.666667%]
+batch_count = [1000] , loss is 4.121582, [TAG-ACC is 94.029851%]
+batch_count = [1100] , loss is 6.333984, [TAG-ACC is 89.928058%]
+batch_count = [1200] , loss is 7.910645, [TAG-ACC is 88.439306%]
+batch_count = [1300] , loss is 5.604980, [TAG-ACC is 90.476190%]
+batch_count = [1400] , loss is 10.225586, [TAG-ACC is 89.629630%]
+Train Time 771.221
+Dev eval: precision = 86.828859%  recall = 87.106548% , f-score = 86.967482%,  [TAG-ACC = 0.000000%]
+Dev Time 39.862
+Test eval: precision = 80.688570%  recall = 81.803685% , f-score = 81.242302%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 47.160
+Dev Has Not Promote 1 / 10
+
+## The 68 Epoch, All 1000 Epochs ! ##
+now lr is 0.0034482758620689655
+batch_count = [100] , loss is 13.726562, [TAG-ACC is 92.307692%]
+batch_count = [200] , loss is 12.680176, [TAG-ACC is 94.957983%]
+batch_count = [300] , loss is 3.789551, [TAG-ACC is 93.137255%]
+batch_count = [400] , loss is 8.016113, [TAG-ACC is 91.666667%]
+batch_count = [500] , loss is 6.601562, [TAG-ACC is 78.260870%]
+batch_count = [600] , loss is 2.451660, [TAG-ACC is 96.815287%]
+batch_count = [700] , loss is 23.099121, [TAG-ACC is 89.166667%]
+batch_count = [800] , loss is 4.234375, [TAG-ACC is 98.757764%]
+batch_count = [900] , loss is 0.291748, [TAG-ACC is 98.245614%]
+batch_count = [1000] , loss is 3.565918, [TAG-ACC is 93.023256%]
+batch_count = [1100] , loss is 14.460938, [TAG-ACC is 93.478261%]
+batch_count = [1200] , loss is 20.510254, [TAG-ACC is 90.217391%]
+batch_count = [1300] , loss is 2.181152, [TAG-ACC is 90.598291%]
+batch_count = [1400] , loss is 11.905273, [TAG-ACC is 82.400000%]
+Train Time 772.219
+Dev eval: precision = 86.906161%  recall = 87.140212% , f-score = 87.023029%,  [TAG-ACC = 0.000000%]
+Dev Time 42.728
+Test eval: precision = 80.947387%  recall = 82.051736% , f-score = 81.495821%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 43.963
+Dev Has Not Promote 2 / 10
+
+## The 69 Epoch, All 1000 Epochs ! ##
+now lr is 0.0034090909090909085
+batch_count = [100] , loss is 0.800049, [TAG-ACC is 93.069307%]
+batch_count = [200] , loss is 9.088867, [TAG-ACC is 89.949749%]
+batch_count = [300] , loss is 6.376953, [TAG-ACC is 89.928058%]
+batch_count = [400] , loss is 16.657227, [TAG-ACC is 90.909091%]
+batch_count = [500] , loss is 8.454102, [TAG-ACC is 85.333333%]
+batch_count = [600] , loss is 9.815430, [TAG-ACC is 94.117647%]
+batch_count = [700] , loss is 7.319336, [TAG-ACC is 89.017341%]
+batch_count = [800] , loss is 15.449219, [TAG-ACC is 94.196429%]
+batch_count = [900] , loss is 5.666992, [TAG-ACC is 89.583333%]
+batch_count = [1000] , loss is 1.660645, [TAG-ACC is 96.341463%]
+batch_count = [1100] , loss is 23.807129, [TAG-ACC is 89.592760%]
+batch_count = [1200] , loss is 8.233887, [TAG-ACC is 90.000000%]
+batch_count = [1300] , loss is 25.568848, [TAG-ACC is 85.869565%]
+batch_count = [1400] , loss is 11.404785, [TAG-ACC is 91.304348%]
+Train Time 769.096
+Dev eval: precision = 86.818715%  recall = 87.140212% , f-score = 86.979167%,  [TAG-ACC = 0.000000%]
+Dev Time 42.578
+Test eval: precision = 80.806142%  recall = 82.051736% , f-score = 81.424176%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 46.235
+Dev Has Not Promote 3 / 10
+
+## The 70 Epoch, All 1000 Epochs ! ##
+now lr is 0.0033707865168539322
+batch_count = [100] , loss is 5.729492, [TAG-ACC is 94.186047%]
+batch_count = [200] , loss is 10.083984, [TAG-ACC is 92.105263%]
+batch_count = [300] , loss is 8.736816, [TAG-ACC is 88.571429%]
+batch_count = [400] , loss is 3.008301, [TAG-ACC is 89.516129%]
+batch_count = [500] , loss is 4.288574, [TAG-ACC is 88.596491%]
+batch_count = [600] , loss is 4.252441, [TAG-ACC is 91.329480%]
+batch_count = [700] , loss is 15.343750, [TAG-ACC is 88.442211%]
+batch_count = [800] , loss is 4.175293, [TAG-ACC is 91.304348%]
+batch_count = [900] , loss is 2.149414, [TAG-ACC is 94.444444%]
+batch_count = [1000] , loss is 5.597656, [TAG-ACC is 90.000000%]
+batch_count = [1100] , loss is 7.420898, [TAG-ACC is 96.703297%]
+batch_count = [1200] , loss is 2.409180, [TAG-ACC is 96.350365%]
+batch_count = [1300] , loss is 8.428711, [TAG-ACC is 88.050314%]
+batch_count = [1400] , loss is 7.724609, [TAG-ACC is 92.045455%]
+Train Time 774.403
+Dev eval: precision = 86.913539%  recall = 87.308534% , f-score = 87.110589%,  [TAG-ACC = 0.000000%]
+Dev Time 42.332
+Test eval: precision = 80.651909%  recall = 81.980865% , f-score = 81.310957%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 46.415
+Dev Has Not Promote 4 / 10
+
+## The 71 Epoch, All 1000 Epochs ! ##
+now lr is 0.003333333333333333
+batch_count = [100] , loss is 3.477051, [TAG-ACC is 97.093023%]
+batch_count = [200] , loss is 3.718262, [TAG-ACC is 83.870968%]
+batch_count = [300] , loss is 8.894043, [TAG-ACC is 86.885246%]
+batch_count = [400] , loss is 5.837402, [TAG-ACC is 88.636364%]
+batch_count = [500] , loss is 9.061523, [TAG-ACC is 93.043478%]
+batch_count = [600] , loss is 3.570801, [TAG-ACC is 93.529412%]
+batch_count = [700] , loss is 2.793457, [TAG-ACC is 90.000000%]
+batch_count = [800] , loss is 20.286621, [TAG-ACC is 89.090909%]
+batch_count = [900] , loss is 0.580078, [TAG-ACC is 96.052632%]
+batch_count = [1000] , loss is 8.505859, [TAG-ACC is 86.585366%]
+batch_count = [1100] , loss is 6.708984, [TAG-ACC is 88.095238%]
+batch_count = [1200] , loss is 5.335449, [TAG-ACC is 95.000000%]
+batch_count = [1300] , loss is 2.265137, [TAG-ACC is 89.423077%]
+batch_count = [1400] , loss is 15.144531, [TAG-ACC is 93.413174%]
+Train Time 774.586
+Dev eval: precision = 86.747995%  recall = 87.375863% , f-score = 87.060797%,  [TAG-ACC = 0.000000%]
+Dev Time 46.690
+Test eval: precision = 80.867747%  recall = 82.228916% , f-score = 81.542651%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 44.802
+Dev Has Not Promote 5 / 10
+
+## The 72 Epoch, All 1000 Epochs ! ##
+now lr is 0.0032967032967032963
+batch_count = [100] , loss is 8.584961, [TAG-ACC is 87.142857%]
+batch_count = [200] , loss is 1.492188, [TAG-ACC is 97.247706%]
+batch_count = [300] , loss is 1.645020, [TAG-ACC is 93.197279%]
+batch_count = [400] , loss is 12.840332, [TAG-ACC is 90.090090%]
+batch_count = [500] , loss is 16.886719, [TAG-ACC is 85.443038%]
+batch_count = [600] , loss is 12.653320, [TAG-ACC is 92.215569%]
+batch_count = [700] , loss is 7.181641, [TAG-ACC is 92.715232%]
+batch_count = [800] , loss is 12.459961, [TAG-ACC is 87.919463%]
+batch_count = [900] , loss is 7.275879, [TAG-ACC is 88.571429%]
+batch_count = [1000] , loss is 18.317871, [TAG-ACC is 86.335404%]
+batch_count = [1100] , loss is 5.314453, [TAG-ACC is 90.697674%]
+batch_count = [1200] , loss is 17.924805, [TAG-ACC is 85.000000%]
+batch_count = [1300] , loss is 8.144531, [TAG-ACC is 89.473684%]
+batch_count = [1400] , loss is 6.383301, [TAG-ACC is 92.000000%]
+Train Time 848.653
+Dev eval: precision = 87.050722%  recall = 87.241205% , f-score = 87.145860%,  [TAG-ACC = 0.000000%]
+Dev Time 50.192
+Test eval: precision = 81.113844%  recall = 81.803685% , f-score = 81.457304%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 46.618
+Dev Has Not Promote 6 / 10
+
+## The 73 Epoch, All 1000 Epochs ! ##
+now lr is 0.0032608695652173916
+batch_count = [100] , loss is 7.648438, [TAG-ACC is 89.411765%]
+batch_count = [200] , loss is 3.073975, [TAG-ACC is 87.912088%]
+batch_count = [300] , loss is 12.236328, [TAG-ACC is 85.981308%]
+batch_count = [400] , loss is 3.807373, [TAG-ACC is 79.104478%]
+batch_count = [500] , loss is 7.776367, [TAG-ACC is 89.115646%]
+batch_count = [600] , loss is 10.703125, [TAG-ACC is 87.719298%]
+batch_count = [700] , loss is 10.892578, [TAG-ACC is 90.000000%]
+batch_count = [800] , loss is 6.540039, [TAG-ACC is 87.591241%]
+batch_count = [900] , loss is 10.556641, [TAG-ACC is 88.461538%]
+batch_count = [1000] , loss is 12.452637, [TAG-ACC is 86.666667%]
+batch_count = [1100] , loss is 14.506836, [TAG-ACC is 87.850467%]
+batch_count = [1200] , loss is 10.027344, [TAG-ACC is 84.782609%]
+batch_count = [1300] , loss is 14.018555, [TAG-ACC is 92.000000%]
+batch_count = [1400] , loss is 3.614258, [TAG-ACC is 92.307692%]
+Train Time 758.691
+Dev eval: precision = 86.879195%  recall = 87.157044% , f-score = 87.017898%,  [TAG-ACC = 0.000000%]
+Dev Time 44.034
+Test eval: precision = 80.707564%  recall = 82.051736% , f-score = 81.374099%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.191579, Locate on 66 Epoch.
+The Current Best Test Result: precision = 81.329114%  recall = 81.963147% , f-score = 81.644899%
+Test Time 43.790
+Dev Has Not Promote 7 / 10
+
+## The 74 Epoch, All 1000 Epochs ! ##
+now lr is 0.003225806451612903
+batch_count = [100] , loss is 11.403320, [TAG-ACC is 85.810811%]
+batch_count = [200] , loss is 2.551758, [TAG-ACC is 93.283582%]
+batch_count = [300] , loss is 5.019531, [TAG-ACC is 94.214876%]
+batch_count = [400] , loss is 9.803711, [TAG-ACC is 91.326531%]
+batch_count = [500] , loss is 16.381836, [TAG-ACC is 95.035461%]
+batch_count = [600] , loss is 5.799805, [TAG-ACC is 94.512195%]
+batch_count = [700] , loss is 3.561035, [TAG-ACC is 84.705882%]
+batch_count = [800] , loss is 8.085938, [TAG-ACC is 96.703297%]
+batch_count = [900] , loss is 17.373047, [TAG-ACC is 85.820896%]
+batch_count = [1000] , loss is 8.146484, [TAG-ACC is 88.489209%]
+batch_count = [1100] , loss is 3.535156, [TAG-ACC is 92.105263%]
+batch_count = [1200] , loss is 9.340820, [TAG-ACC is 91.452991%]
+batch_count = [1300] , loss is 16.936523, [TAG-ACC is 94.252874%]
+batch_count = [1400] , loss is 5.095215, [TAG-ACC is 90.780142%]
+Train Time 766.858
+Dev eval: precision = 87.167844%  recall = 87.241205% , f-score = 87.204509%,  [TAG-ACC = 0.000000%]
+Dev Time 44.036
+Test eval: precision = 81.154856%  recall = 82.175762% , f-score = 81.662118%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.204509, Locate on 74 Epoch.
+The Current Best Test Result: precision = 81.154856%  recall = 82.175762% , f-score = 81.662118%
+Test Time 45.471
+save best model to ./Save_BModel/ner_model.pt
+
+## The 75 Epoch, All 1000 Epochs ! ##
+now lr is 0.0031914893617021275
+batch_count = [100] , loss is 5.375977, [TAG-ACC is 91.954023%]
+batch_count = [200] , loss is 8.308594, [TAG-ACC is 89.473684%]
+batch_count = [300] , loss is 9.842773, [TAG-ACC is 93.181818%]
+batch_count = [400] , loss is 3.990723, [TAG-ACC is 93.069307%]
+batch_count = [500] , loss is 5.176270, [TAG-ACC is 74.626866%]
+batch_count = [600] , loss is 15.463867, [TAG-ACC is 90.909091%]
+batch_count = [700] , loss is 2.843994, [TAG-ACC is 86.904762%]
+batch_count = [800] , loss is 11.587891, [TAG-ACC is 94.767442%]
+batch_count = [900] , loss is 12.580078, [TAG-ACC is 89.545455%]
+batch_count = [1000] , loss is 3.089355, [TAG-ACC is 94.512195%]
+batch_count = [1100] , loss is 7.853516, [TAG-ACC is 90.909091%]
+batch_count = [1200] , loss is 0.345703, [TAG-ACC is 88.888889%]
+batch_count = [1300] , loss is 7.430664, [TAG-ACC is 91.390728%]
+batch_count = [1400] , loss is 2.986328, [TAG-ACC is 86.163522%]
+Train Time 762.324
+Dev eval: precision = 86.950665%  recall = 86.921394% , f-score = 86.936027%,  [TAG-ACC = 0.000000%]
+Dev Time 44.002
+Test eval: precision = 81.105263%  recall = 81.909993% , f-score = 81.505642%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.204509, Locate on 74 Epoch.
+The Current Best Test Result: precision = 81.154856%  recall = 82.175762% , f-score = 81.662118%
+Test Time 43.398
+Dev Has Not Promote 1 / 10
+
+## The 76 Epoch, All 1000 Epochs ! ##
+now lr is 0.003157894736842105
+batch_count = [100] , loss is 7.729492, [TAG-ACC is 86.875000%]
+batch_count = [200] , loss is 11.991211, [TAG-ACC is 88.888889%]
+batch_count = [300] , loss is 1.369873, [TAG-ACC is 95.348837%]
+batch_count = [400] , loss is 0.784668, [TAG-ACC is 89.361702%]
+batch_count = [500] , loss is 18.489746, [TAG-ACC is 92.574257%]
+batch_count = [600] , loss is 3.807861, [TAG-ACC is 88.311688%]
+batch_count = [700] , loss is 4.980469, [TAG-ACC is 83.478261%]
+batch_count = [800] , loss is 11.342285, [TAG-ACC is 91.216216%]
+batch_count = [900] , loss is 1.125977, [TAG-ACC is 90.265487%]
+batch_count = [1000] , loss is 7.840820, [TAG-ACC is 84.821429%]
+batch_count = [1100] , loss is 11.295898, [TAG-ACC is 92.567568%]
+batch_count = [1200] , loss is 12.841309, [TAG-ACC is 91.266376%]
+batch_count = [1300] , loss is 14.831055, [TAG-ACC is 88.111888%]
+batch_count = [1400] , loss is 11.536133, [TAG-ACC is 95.811518%]
+Train Time 864.706
+Dev eval: precision = 87.209302%  recall = 87.106548% , f-score = 87.157895%,  [TAG-ACC = 0.000000%]
+Dev Time 45.114
+Test eval: precision = 81.372893%  recall = 82.122608% , f-score = 81.746032%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.204509, Locate on 74 Epoch.
+The Current Best Test Result: precision = 81.154856%  recall = 82.175762% , f-score = 81.662118%
+Test Time 48.181
+Dev Has Not Promote 2 / 10
+
+## The 77 Epoch, All 1000 Epochs ! ##
+now lr is 0.0031249999999999993
+batch_count = [100] , loss is 7.831055, [TAG-ACC is 92.258065%]
+batch_count = [200] , loss is 2.112061, [TAG-ACC is 86.363636%]
+batch_count = [300] , loss is 2.231934, [TAG-ACC is 90.625000%]
+batch_count = [400] , loss is 4.983398, [TAG-ACC is 91.000000%]
+batch_count = [500] , loss is 2.204590, [TAG-ACC is 96.183206%]
+batch_count = [600] , loss is 6.985352, [TAG-ACC is 93.478261%]
+batch_count = [700] , loss is 4.340820, [TAG-ACC is 93.069307%]
+batch_count = [800] , loss is 8.536621, [TAG-ACC is 92.948718%]
+batch_count = [900] , loss is 4.424805, [TAG-ACC is 82.394366%]
+batch_count = [1000] , loss is 5.405762, [TAG-ACC is 91.269841%]
+batch_count = [1100] , loss is 6.716797, [TAG-ACC is 94.897959%]
+batch_count = [1200] , loss is 3.872070, [TAG-ACC is 94.512195%]
+batch_count = [1300] , loss is 9.246582, [TAG-ACC is 88.333333%]
+batch_count = [1400] , loss is 12.563965, [TAG-ACC is 89.375000%]
+Train Time 814.417
+Dev eval: precision = 86.771601%  recall = 87.224373% , f-score = 86.997398%,  [TAG-ACC = 0.000000%]
+Dev Time 46.622
+Test eval: precision = 80.927476%  recall = 82.246634% , f-score = 81.581722%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.204509, Locate on 74 Epoch.
+The Current Best Test Result: precision = 81.154856%  recall = 82.175762% , f-score = 81.662118%
+Test Time 47.403
+Dev Has Not Promote 3 / 10
+
+## The 78 Epoch, All 1000 Epochs ! ##
+now lr is 0.0030927835051546395
+batch_count = [100] , loss is 8.764160, [TAG-ACC is 94.444444%]
+batch_count = [200] , loss is 6.642822, [TAG-ACC is 88.888889%]
+batch_count = [300] , loss is 17.728027, [TAG-ACC is 88.524590%]
+batch_count = [400] , loss is 0.821777, [TAG-ACC is 92.473118%]
+batch_count = [500] , loss is 15.065918, [TAG-ACC is 85.000000%]
+batch_count = [600] , loss is 7.401855, [TAG-ACC is 92.638037%]
+batch_count = [700] , loss is 2.307617, [TAG-ACC is 95.604396%]
+batch_count = [800] , loss is 2.665527, [TAG-ACC is 92.307692%]
+batch_count = [900] , loss is 5.304688, [TAG-ACC is 94.444444%]
+batch_count = [1000] , loss is 3.848633, [TAG-ACC is 89.436620%]
+batch_count = [1100] , loss is 8.494141, [TAG-ACC is 91.472868%]
+batch_count = [1200] , loss is 23.319824, [TAG-ACC is 89.743590%]
+batch_count = [1300] , loss is 13.866699, [TAG-ACC is 88.961039%]
+batch_count = [1400] , loss is 5.995483, [TAG-ACC is 80.000000%]
+Train Time 843.392
+Dev eval: precision = 87.253081%  recall = 86.988722% , f-score = 87.120701%,  [TAG-ACC = 0.000000%]
+Dev Time 48.267
+Test eval: precision = 81.498417%  recall = 82.104890% , f-score = 81.800530%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.204509, Locate on 74 Epoch.
+The Current Best Test Result: precision = 81.154856%  recall = 82.175762% , f-score = 81.662118%
+Test Time 46.088
+Dev Has Not Promote 4 / 10
+
+## The 79 Epoch, All 1000 Epochs ! ##
+now lr is 0.003061224489795918
+batch_count = [100] , loss is 2.979492, [TAG-ACC is 94.039735%]
+batch_count = [200] , loss is 9.702637, [TAG-ACC is 81.967213%]
+batch_count = [300] , loss is 6.603027, [TAG-ACC is 92.307692%]
+batch_count = [400] , loss is 3.682617, [TAG-ACC is 94.047619%]
+batch_count = [500] , loss is 2.652832, [TAG-ACC is 94.252874%]
+batch_count = [600] , loss is 5.595703, [TAG-ACC is 94.059406%]
+batch_count = [700] , loss is 5.551758, [TAG-ACC is 94.594595%]
+batch_count = [800] , loss is 7.399902, [TAG-ACC is 86.458333%]
+batch_count = [900] , loss is 1.277832, [TAG-ACC is 93.243243%]
+batch_count = [1000] , loss is 9.296875, [TAG-ACC is 87.974684%]
+batch_count = [1100] , loss is 3.148438, [TAG-ACC is 85.365854%]
+batch_count = [1200] , loss is 3.223633, [TAG-ACC is 94.630872%]
+batch_count = [1300] , loss is 6.480469, [TAG-ACC is 93.367347%]
+batch_count = [1400] , loss is 11.857910, [TAG-ACC is 93.820225%]
+Train Time 824.478
+Dev eval: precision = 87.502111%  recall = 87.207541% , f-score = 87.354578%,  [TAG-ACC = 0.000000%]
+Dev Time 46.002
+Test eval: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 47.187
+save best model to ./Save_BModel/ner_model.pt
+
+## The 80 Epoch, All 1000 Epochs ! ##
+now lr is 0.00303030303030303
+batch_count = [100] , loss is 13.852051, [TAG-ACC is 87.912088%]
+batch_count = [200] , loss is 2.379883, [TAG-ACC is 96.491228%]
+batch_count = [300] , loss is 16.574219, [TAG-ACC is 94.642857%]
+batch_count = [400] , loss is 4.936523, [TAG-ACC is 92.063492%]
+batch_count = [500] , loss is 9.897461, [TAG-ACC is 91.489362%]
+batch_count = [600] , loss is 9.355469, [TAG-ACC is 85.393258%]
+batch_count = [700] , loss is 12.376465, [TAG-ACC is 94.805195%]
+batch_count = [800] , loss is 12.718262, [TAG-ACC is 85.987261%]
+batch_count = [900] , loss is 8.482422, [TAG-ACC is 89.690722%]
+batch_count = [1000] , loss is 1.180664, [TAG-ACC is 93.959732%]
+batch_count = [1100] , loss is 10.130859, [TAG-ACC is 93.854749%]
+batch_count = [1200] , loss is 11.325195, [TAG-ACC is 84.177215%]
+batch_count = [1300] , loss is 1.459473, [TAG-ACC is 90.666667%]
+batch_count = [1400] , loss is 9.440918, [TAG-ACC is 88.304094%]
+Train Time 766.274
+Dev eval: precision = 86.961622%  recall = 87.342198% , f-score = 87.151495%,  [TAG-ACC = 0.000000%]
+Dev Time 44.608
+Test eval: precision = 80.835810%  recall = 81.909993% , f-score = 81.369357%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 48.156
+Dev Has Not Promote 1 / 10
+
+## The 81 Epoch, All 1000 Epochs ! ##
+now lr is 0.003
+batch_count = [100] , loss is 5.226562, [TAG-ACC is 92.948718%]
+batch_count = [200] , loss is 11.554688, [TAG-ACC is 90.384615%]
+batch_count = [300] , loss is 11.659180, [TAG-ACC is 85.294118%]
+batch_count = [400] , loss is 3.542480, [TAG-ACC is 93.023256%]
+batch_count = [500] , loss is 18.231201, [TAG-ACC is 85.981308%]
+batch_count = [600] , loss is 1.622559, [TAG-ACC is 87.786260%]
+batch_count = [700] , loss is 5.620605, [TAG-ACC is 91.964286%]
+batch_count = [800] , loss is 6.018311, [TAG-ACC is 93.103448%]
+batch_count = [900] , loss is 5.153320, [TAG-ACC is 96.124031%]
+batch_count = [1000] , loss is 4.054688, [TAG-ACC is 91.250000%]
+batch_count = [1100] , loss is 1.995117, [TAG-ACC is 98.378378%]
+batch_count = [1200] , loss is 6.264160, [TAG-ACC is 88.349515%]
+batch_count = [1300] , loss is 5.873047, [TAG-ACC is 87.931034%]
+batch_count = [1400] , loss is 19.909668, [TAG-ACC is 92.307692%]
+Train Time 750.876
+Dev eval: precision = 87.197174%  recall = 87.241205% , f-score = 87.219184%,  [TAG-ACC = 0.000000%]
+Dev Time 44.199
+Test eval: precision = 81.403941%  recall = 81.980865% , f-score = 81.691384%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 44.353
+Dev Has Not Promote 2 / 10
+
+## The 82 Epoch, All 1000 Epochs ! ##
+now lr is 0.0029702970297029703
+batch_count = [100] , loss is 15.597656, [TAG-ACC is 90.714286%]
+batch_count = [200] , loss is 2.113770, [TAG-ACC is 90.099010%]
+batch_count = [300] , loss is 2.024414, [TAG-ACC is 96.323529%]
+batch_count = [400] , loss is 15.186035, [TAG-ACC is 91.160221%]
+batch_count = [500] , loss is 5.613281, [TAG-ACC is 92.178771%]
+batch_count = [600] , loss is 7.432129, [TAG-ACC is 89.147287%]
+batch_count = [700] , loss is 14.856934, [TAG-ACC is 88.819876%]
+batch_count = [800] , loss is 4.996582, [TAG-ACC is 89.719626%]
+batch_count = [900] , loss is 3.080078, [TAG-ACC is 93.805310%]
+batch_count = [1000] , loss is 7.591309, [TAG-ACC is 94.011976%]
+batch_count = [1100] , loss is 20.272461, [TAG-ACC is 84.444444%]
+batch_count = [1200] , loss is 1.388672, [TAG-ACC is 93.162393%]
+batch_count = [1300] , loss is 1.714355, [TAG-ACC is 92.741935%]
+batch_count = [1400] , loss is 7.970215, [TAG-ACC is 91.428571%]
+Train Time 787.081
+Dev eval: precision = 87.022773%  recall = 87.476856% , f-score = 87.249224%,  [TAG-ACC = 0.000000%]
+Dev Time 48.538
+Test eval: precision = 81.252186%  recall = 82.317505% , f-score = 81.781377%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 46.380
+Dev Has Not Promote 3 / 10
+
+## The 83 Epoch, All 1000 Epochs ! ##
+now lr is 0.002941176470588235
+batch_count = [100] , loss is 13.753906, [TAG-ACC is 84.792627%]
+batch_count = [200] , loss is 4.478027, [TAG-ACC is 89.130435%]
+batch_count = [300] , loss is 11.826172, [TAG-ACC is 86.915888%]
+batch_count = [400] , loss is 4.666748, [TAG-ACC is 90.566038%]
+batch_count = [500] , loss is 3.367676, [TAG-ACC is 85.430464%]
+batch_count = [600] , loss is 1.438721, [TAG-ACC is 95.714286%]
+batch_count = [700] , loss is 3.627930, [TAG-ACC is 93.203883%]
+batch_count = [800] , loss is 3.690918, [TAG-ACC is 91.111111%]
+batch_count = [900] , loss is 6.752441, [TAG-ACC is 95.205479%]
+batch_count = [1000] , loss is 3.562012, [TAG-ACC is 88.596491%]
+batch_count = [1100] , loss is 9.947266, [TAG-ACC is 88.068182%]
+batch_count = [1200] , loss is 6.016113, [TAG-ACC is 91.875000%]
+batch_count = [1300] , loss is 5.069336, [TAG-ACC is 95.973154%]
+batch_count = [1400] , loss is 4.421387, [TAG-ACC is 96.153846%]
+Train Time 805.077
+Dev eval: precision = 86.931723%  recall = 87.224373% , f-score = 87.077802%,  [TAG-ACC = 0.000000%]
+Dev Time 45.210
+Test eval: precision = 81.394534%  recall = 82.317505% , f-score = 81.853418%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 43.543
+Dev Has Not Promote 4 / 10
+
+## The 84 Epoch, All 1000 Epochs ! ##
+now lr is 0.0029126213592233006
+batch_count = [100] , loss is 9.129395, [TAG-ACC is 90.303030%]
+batch_count = [200] , loss is 17.498047, [TAG-ACC is 88.983051%]
+batch_count = [300] , loss is 2.901367, [TAG-ACC is 93.670886%]
+batch_count = [400] , loss is 5.875000, [TAG-ACC is 92.436975%]
+batch_count = [500] , loss is 5.144043, [TAG-ACC is 90.291262%]
+batch_count = [600] , loss is 3.772461, [TAG-ACC is 91.428571%]
+batch_count = [700] , loss is 11.385742, [TAG-ACC is 87.313433%]
+batch_count = [800] , loss is 3.709961, [TAG-ACC is 93.006993%]
+batch_count = [900] , loss is 10.176270, [TAG-ACC is 91.228070%]
+batch_count = [1000] , loss is 2.654419, [TAG-ACC is 84.000000%]
+batch_count = [1100] , loss is 3.153320, [TAG-ACC is 94.578313%]
+batch_count = [1200] , loss is 2.063965, [TAG-ACC is 89.795918%]
+batch_count = [1300] , loss is 1.354004, [TAG-ACC is 95.762712%]
+batch_count = [1400] , loss is 7.382812, [TAG-ACC is 88.757396%]
+Train Time 789.574
+Dev eval: precision = 86.968174%  recall = 87.392695% , f-score = 87.179918%,  [TAG-ACC = 0.000000%]
+Dev Time 45.273
+Test eval: precision = 81.256545%  recall = 82.494685% , f-score = 81.870934%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 42.343
+Dev Has Not Promote 5 / 10
+
+## The 85 Epoch, All 1000 Epochs ! ##
+now lr is 0.0028846153846153843
+batch_count = [100] , loss is 5.599121, [TAG-ACC is 94.512195%]
+batch_count = [200] , loss is 9.679688, [TAG-ACC is 92.052980%]
+batch_count = [300] , loss is 14.602539, [TAG-ACC is 90.789474%]
+batch_count = [400] , loss is 6.735840, [TAG-ACC is 93.571429%]
+batch_count = [500] , loss is 3.749023, [TAG-ACC is 89.062500%]
+batch_count = [600] , loss is 14.742188, [TAG-ACC is 80.597015%]
+batch_count = [700] , loss is 13.116699, [TAG-ACC is 88.288288%]
+batch_count = [800] , loss is 8.938477, [TAG-ACC is 85.882353%]
+batch_count = [900] , loss is 7.490234, [TAG-ACC is 90.322581%]
+batch_count = [1000] , loss is 10.919312, [TAG-ACC is 85.365854%]
+batch_count = [1100] , loss is 14.479980, [TAG-ACC is 85.443038%]
+batch_count = [1200] , loss is 5.320312, [TAG-ACC is 89.655172%]
+batch_count = [1300] , loss is 7.071289, [TAG-ACC is 95.804196%]
+batch_count = [1400] , loss is 6.924805, [TAG-ACC is 90.243902%]
+Train Time 771.630
+Dev eval: precision = 87.201881%  recall = 87.392695% , f-score = 87.297184%,  [TAG-ACC = 0.000000%]
+Dev Time 44.522
+Test eval: precision = 81.077300%  recall = 82.140326% , f-score = 81.605351%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 39.893
+Dev Has Not Promote 6 / 10
+
+## The 86 Epoch, All 1000 Epochs ! ##
+now lr is 0.002857142857142857
+batch_count = [100] , loss is 4.176758, [TAG-ACC is 94.152047%]
+batch_count = [200] , loss is 15.174805, [TAG-ACC is 89.189189%]
+batch_count = [300] , loss is 12.559570, [TAG-ACC is 86.868687%]
+batch_count = [400] , loss is 8.607910, [TAG-ACC is 88.983051%]
+batch_count = [500] , loss is 7.264648, [TAG-ACC is 92.777778%]
+batch_count = [600] , loss is 7.462402, [TAG-ACC is 92.857143%]
+batch_count = [700] , loss is 9.890869, [TAG-ACC is 86.138614%]
+batch_count = [800] , loss is 7.812500, [TAG-ACC is 90.298507%]
+batch_count = [900] , loss is 4.967773, [TAG-ACC is 91.129032%]
+batch_count = [1000] , loss is 5.785156, [TAG-ACC is 93.918919%]
+batch_count = [1100] , loss is 9.916748, [TAG-ACC is 85.869565%]
+batch_count = [1200] , loss is 14.316406, [TAG-ACC is 90.780142%]
+batch_count = [1300] , loss is 16.645020, [TAG-ACC is 88.888889%]
+batch_count = [1400] , loss is 6.860352, [TAG-ACC is 97.142857%]
+Train Time 791.642
+Dev eval: precision = 87.270893%  recall = 87.359030% , f-score = 87.314939%,  [TAG-ACC = 0.000000%]
+Dev Time 41.794
+Test eval: precision = 81.297108%  recall = 82.175762% , f-score = 81.734073%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 44.374
+Dev Has Not Promote 7 / 10
+
+## The 87 Epoch, All 1000 Epochs ! ##
+now lr is 0.002830188679245283
+batch_count = [100] , loss is 5.204102, [TAG-ACC is 96.031746%]
+batch_count = [200] , loss is 6.651611, [TAG-ACC is 92.307692%]
+batch_count = [300] , loss is 3.303223, [TAG-ACC is 82.738095%]
+batch_count = [400] , loss is 4.910645, [TAG-ACC is 93.037975%]
+batch_count = [500] , loss is 4.557617, [TAG-ACC is 95.384615%]
+batch_count = [600] , loss is 3.577637, [TAG-ACC is 88.297872%]
+batch_count = [700] , loss is 7.345215, [TAG-ACC is 91.719745%]
+batch_count = [800] , loss is 14.015625, [TAG-ACC is 94.666667%]
+batch_count = [900] , loss is 20.686035, [TAG-ACC is 87.943262%]
+batch_count = [1000] , loss is 10.565430, [TAG-ACC is 89.423077%]
+batch_count = [1100] , loss is 7.147949, [TAG-ACC is 91.052632%]
+batch_count = [1200] , loss is 18.221680, [TAG-ACC is 89.147287%]
+batch_count = [1300] , loss is 2.337891, [TAG-ACC is 92.907801%]
+batch_count = [1400] , loss is 3.311035, [TAG-ACC is 85.207101%]
+Train Time 752.590
+Dev eval: precision = 87.070267%  recall = 87.392695% , f-score = 87.231183%,  [TAG-ACC = 0.000000%]
+Dev Time 42.203
+Test eval: precision = 81.295972%  recall = 82.246634% , f-score = 81.768540%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 44.316
+Dev Has Not Promote 8 / 10
+
+## The 88 Epoch, All 1000 Epochs ! ##
+now lr is 0.002803738317757009
+batch_count = [100] , loss is 10.873535, [TAG-ACC is 87.288136%]
+batch_count = [200] , loss is 4.556641, [TAG-ACC is 94.326241%]
+batch_count = [300] , loss is 7.744141, [TAG-ACC is 88.721805%]
+batch_count = [400] , loss is 5.771973, [TAG-ACC is 89.320388%]
+batch_count = [500] , loss is 0.658203, [TAG-ACC is 94.000000%]
+batch_count = [600] , loss is 0.892578, [TAG-ACC is 95.200000%]
+batch_count = [700] , loss is 5.309082, [TAG-ACC is 88.888889%]
+batch_count = [800] , loss is 1.823242, [TAG-ACC is 96.000000%]
+batch_count = [900] , loss is 5.440430, [TAG-ACC is 83.647799%]
+batch_count = [1000] , loss is 5.985352, [TAG-ACC is 91.358025%]
+batch_count = [1100] , loss is 3.050293, [TAG-ACC is 92.913386%]
+batch_count = [1200] , loss is 8.274414, [TAG-ACC is 87.074830%]
+batch_count = [1300] , loss is 18.195312, [TAG-ACC is 87.826087%]
+batch_count = [1400] , loss is 1.497070, [TAG-ACC is 95.364238%]
+Train Time 747.939
+Dev eval: precision = 87.130872%  recall = 87.409527% , f-score = 87.269977%,  [TAG-ACC = 0.000000%]
+Dev Time 44.710
+Test eval: precision = 81.210637%  recall = 82.246634% , f-score = 81.725352%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 43.827
+Dev Has Not Promote 9 / 10
+
+## The 89 Epoch, All 1000 Epochs ! ##
+now lr is 0.0027777777777777775
+batch_count = [100] , loss is 8.608887, [TAG-ACC is 87.356322%]
+batch_count = [200] , loss is 5.885254, [TAG-ACC is 92.968750%]
+batch_count = [300] , loss is 0.331543, [TAG-ACC is 94.871795%]
+batch_count = [400] , loss is 4.451660, [TAG-ACC is 82.022472%]
+batch_count = [500] , loss is 5.278320, [TAG-ACC is 90.909091%]
+batch_count = [600] , loss is 5.018066, [TAG-ACC is 92.537313%]
+batch_count = [700] , loss is 3.325684, [TAG-ACC is 96.376812%]
+batch_count = [800] , loss is 13.509766, [TAG-ACC is 89.583333%]
+batch_count = [900] , loss is 4.162109, [TAG-ACC is 95.419847%]
+batch_count = [1000] , loss is 14.772461, [TAG-ACC is 84.827586%]
+batch_count = [1100] , loss is 4.131836, [TAG-ACC is 91.818182%]
+batch_count = [1200] , loss is 4.431641, [TAG-ACC is 92.708333%]
+batch_count = [1300] , loss is 17.876953, [TAG-ACC is 92.258065%]
+batch_count = [1400] , loss is 11.728516, [TAG-ACC is 87.903226%]
+Train Time 721.701
+Dev eval: precision = 87.005366%  recall = 87.342198% , f-score = 87.173457%,  [TAG-ACC = 0.000000%]
+Dev Time 41.921
+Test eval: precision = 81.274064%  recall = 82.282069% , f-score = 81.774960%,  [TAG-ACC = 0.000000%]
+The Current Best Dev F-score: 87.354578, Locate on 79 Epoch.
+The Current Best Test Result: precision = 81.705810%  recall = 81.980865% , f-score = 81.843106%
+Test Time 43.351
+Dev Has Not Promote 10 / 10
+Early Stop Train. Best Score Locate on 79 Epoch.
